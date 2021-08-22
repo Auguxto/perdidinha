@@ -3,7 +3,7 @@ import styled from 'styled-components/native';
 
 import Logo from '../../assets/images/svg/Logo.svg';
 
-export const EnterContainer = styled.View`
+export const EnterContainer = styled.KeyboardAvoidingView`
   flex: 1;
 
   background-color: #be5deb;
@@ -19,6 +19,7 @@ export const Introduction = styled.View`
   flex: 2;
 
   align-items: center;
+  justify-content: flex-end;
 
   position: relative;
 `;
@@ -43,17 +44,17 @@ export const IntroductionDesc = styled.Text`
   color: #ffffff;
 
   margin-top: 30px;
+  margin-bottom: 30%;
 `;
 
 export const Button = styled.TouchableOpacity.attrs({
   activeOpacity: 0.8,
 })<{backgroundColor: string}>`
-  width: 90%;
+  width: 100%;
   height: 70px;
 
-  position: absolute;
-
-  bottom: 40px;
+  margin: 0px auto;
+  margin-bottom: 30px;
 
   justify-content: center;
   align-items: center;
@@ -61,6 +62,19 @@ export const Button = styled.TouchableOpacity.attrs({
   background-color: ${props => props.backgroundColor};
 
   border-radius: 10px;
+`;
+
+export const ModalButtonContainer = styled.View`
+  flex: 1;
+  width: 100%;
+
+  justify-content: flex-end;
+`;
+
+export const ModalButton = styled(Button)``;
+
+export const IntroButton = styled(Button)`
+  width: 90%;
 `;
 
 export const ButtonText = styled.Text<{textColor: string}>`
@@ -72,8 +86,13 @@ export const ButtonText = styled.Text<{textColor: string}>`
 
 export const Modal = styled(Animated.View)`
   flex: 2;
+  flex-direction: column;
+
+  align-items: center;
 
   background-color: #ffffff;
+
+  padding: 0px 20px;
 
   margin-top: -30px;
 
@@ -85,7 +104,9 @@ export const ModalTitle = styled.Text`
   font-family: 'Inter-ExtraLight';
   font-size: 28px;
 
-  margin: 30px 40px;
+  align-self: flex-start;
+
+  margin: 30px 20px;
 
   color: #191716;
 `;
@@ -98,7 +119,7 @@ export const ModalInput = styled.TextInput.attrs({
   font-size: 18px;
   color: #be5deb;
 
-  width: 90%;
+  width: 100%;
   height: 70px;
 
   border-width: 1px;
@@ -106,8 +127,26 @@ export const ModalInput = styled.TextInput.attrs({
 
   border-radius: 10px;
 
-  margin: 0 auto;
   margin-top: 30px;
 
   padding-left: 20px;
+`;
+
+export const ModalCheckBox = styled.View`
+  flex-direction: row;
+
+  align-self: flex-start;
+
+  margin-top: 20px;
+
+  align-items: center;
+`;
+
+export const ModalCheckBoxText = styled.Text`
+  font-family: 'Inter-ExtraLight';
+  font-size: 16px;
+
+  color: #be5deb;
+
+  margin-left: 10px;
 `;
