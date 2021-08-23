@@ -16,3 +16,20 @@ export async function getFromStorage(key: string): Promise<any> {
     console.log(`${key}: no data!`);
   }
 }
+
+export async function saveUser(user: User) {
+  try {
+    await AsyncStorage.setItem('user', JSON.stringify(user));
+  } catch {
+    console.log(`Error on saving ${user}`);
+  }
+}
+
+export async function getUser(): Promise<User> {
+  try {
+    let user = await AsyncStorage.getItem('user');
+    if (user) {
+      return JSON.parse(user);
+    }
+  } catch {}
+}

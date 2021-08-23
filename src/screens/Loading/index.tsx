@@ -10,15 +10,15 @@ interface ILoading {
 }
 
 const Loading = ({navigation}: ILoading) => {
-  const {name} = useContext(UserContext);
+  const {user} = useContext(UserContext);
 
   useEffect(() => {
     SplashScreen.hide();
-    if (name) {
+    if (!user) {
       navigation.navigate('Enter');
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [name]);
+  }, [user]);
 
   return (
     <LoadingContainer>

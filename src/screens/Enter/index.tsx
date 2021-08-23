@@ -1,7 +1,10 @@
-import React, {useState, useRef} from 'react';
+import React, {useState, useRef, useEffect, useContext} from 'react';
 import {Animated, Dimensions} from 'react-native';
+import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 
 import CheckBox from '@components/CheckBox';
+
+import {UserContext} from '@contexts/UserContext';
 
 import {
   ButtonText,
@@ -20,10 +23,16 @@ import {
   ModalTitle,
 } from './styled.enter';
 
-const Enter = () => {
+interface IEnter {
+  navigation: NativeStackNavigationProp<RootStackNavigation, 'Enter'>;
+}
+
+const Enter = ({navigation}: IEnter) => {
   const [modalActive, setModalActive] = useState(false);
   const [name, setName] = useState<string>();
   const [checked, setChecked] = useState(false);
+
+  const {user, handleSetUser} = useContext(UserContext);
 
   const windowHeight = Dimensions.get('window').height;
 
@@ -36,6 +45,20 @@ const Enter = () => {
       duration: 1 * 1000,
     }).start();
   };
+
+  function handleLogin() {
+    if (name.length >= 3) {
+      handleSetUser(name, checked);
+
+      console.log(user);
+    }
+  }
+
+  useEffect(() => {
+    navigation.addListener('beforeRemove', event => {
+      event.preventDefault();
+    });
+  }, [navigation]);
 
   return (
     <EnterContainer behavior="height">
@@ -57,8 +80,7 @@ const Enter = () => {
           <ModalButtonContainer>
             <ModalButton
               onPress={() => {
-                setModalActive(true);
-                active();
+                handleLogin();
               }}
               backgroundColor="#BE5DEB">
               <ButtonText textColor="#FFFFFF">Entrar</ButtonText>

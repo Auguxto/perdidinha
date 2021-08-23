@@ -4,5 +4,7 @@ type RootStackNavigation = {
 };
 
 interface User {
+  id: string;
   name: string;
+  biometry: boolean;
 }

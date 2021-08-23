@@ -1,9 +1,11 @@
 import React, {useState, useEffect, createContext, ReactNode} from 'react';
+import {v4 as uuid} from 'uuid';
 
-import {getFromStorage} from '@utils/storage';
+import {getUser, saveUser} from '@utils/storage';
 
-interface IUserContext extends User {
-  handleSetName: (name_value: string) => void;
+interface IUserContext {
+  user: User;
+  handleSetUser: (name_value: string, biometry_value: boolean) => void;
 }
 
 interface IUserProvider {
@@ -13,24 +15,27 @@ interface IUserProvider {
 export const UserContext = createContext({} as IUserContext);
 
 const UserProvider = ({children}: IUserProvider) => {
-  const [name, setName] = useState<string>('Victor');
+  const [user, setUser] = useState<User>();
 
-  function handleSetName(name_value: string) {
-    setName(name_value);
+  async function handleSetUser(name_value: string, biometry_value: boolean) {
+    const id = uuid();
+    setUser({name: name_value, biometry: biometry_value, id});
+    await saveUser(user);
   }
 
   useEffect(() => {
     (async () => {
-      let name_storage = await getFromStorage(name);
-      if (name_storage) {
-        setName(name_storage);
+      let user_storage = await getUser();
+      if (user_storage) {
+        setUser(user_storage);
+      } else {
+        console.log('No user found on storage');
       }
     })();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
-    <UserContext.Provider value={{name, handleSetName}}>
+    <UserContext.Provider value={{user, handleSetUser}}>
       {children}
     </UserContext.Provider>
   );
