@@ -33,3 +33,9 @@ export async function getUser(): Promise<User> {
     }
   } catch {}
 }
+
+export async function removeUser() {
+  try {
+    await AsyncStorage.removeItem('user');
+  } catch {}
+}

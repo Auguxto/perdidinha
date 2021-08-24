@@ -1,11 +1,12 @@
 import React, {useState, useEffect, createContext, ReactNode} from 'react';
 import {v4 as uuid} from 'uuid';
 
-import {getUser, saveUser} from '@utils/storage';
+import {getUser, removeUser, saveUser} from '@utils/storage';
 
 interface IUserContext {
   user: User;
   handleSetUser: (name_value: string, biometry_value: boolean) => void;
+  handleRemoveUser: () => void;
 }
 
 interface IUserProvider {
@@ -23,6 +24,11 @@ const UserProvider = ({children}: IUserProvider) => {
     await saveUser(user);
   }
 
+  async function handleRemoveUser() {
+    setUser(null);
+    await removeUser();
+  }
+
   useEffect(() => {
     (async () => {
       let user_storage = await getUser();
@@ -35,7 +41,7 @@ const UserProvider = ({children}: IUserProvider) => {
   }, []);
 
   return (
-    <UserContext.Provider value={{user, handleSetUser}}>
+    <UserContext.Provider value={{user, handleSetUser, handleRemoveUser}}>
       {children}
     </UserContext.Provider>
   );

@@ -3,6 +3,7 @@ import SplashScreen from 'react-native-splash-screen';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack/lib/typescript/src/types';
 
 import {LoadingContainer, LoadingText} from './styles.loading';
+
 import {UserContext} from '@contexts/UserContext';
 
 interface ILoading {
@@ -14,8 +15,9 @@ const Loading = ({navigation}: ILoading) => {
 
   useEffect(() => {
     SplashScreen.hide();
-    if (!user) {
-      navigation.navigate('Enter');
+    if (user) {
+      console.log(user);
+      return navigation.navigate('Home');
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user]);

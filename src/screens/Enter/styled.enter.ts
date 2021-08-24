@@ -61,7 +61,7 @@ export const Button = styled.TouchableOpacity.attrs({
 
   background-color: ${props => props.backgroundColor};
 
-  border-radius: 10px;
+  border-radius: 100px;
 `;
 
 export const ModalButtonContainer = styled.View`
