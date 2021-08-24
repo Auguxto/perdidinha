@@ -15,8 +15,7 @@ const App = () => {
   return (
     <NavigationContainer>
       <UserProvider>
-        <Stack.Navigator
-          screenOptions={{headerShown: false, orientation: 'portrait'}}>
+        <Stack.Navigator screenOptions={{headerShown: false}}>
           <Stack.Screen name="Loading" component={Loading} />
           <Stack.Screen name="Enter" component={Enter} />
           <Stack.Screen name="Home" component={Home} />

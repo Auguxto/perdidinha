@@ -32,7 +32,7 @@ const Enter = ({navigation}: IEnter) => {
   const [name, setName] = useState<string>();
   const [checked, setChecked] = useState(false);
 
-  const {user, handleSetUser} = useContext(UserContext);
+  const {handleSetUser} = useContext(UserContext);
 
   const windowHeight = Dimensions.get('window').height;
 
@@ -49,8 +49,6 @@ const Enter = ({navigation}: IEnter) => {
   function handleLogin() {
     if (name.length >= 3) {
       handleSetUser(name, checked);
-
-      console.log(user);
     }
   }
 

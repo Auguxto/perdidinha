@@ -20,8 +20,9 @@ export async function getFromStorage(key: string): Promise<any> {
 export async function saveUser(user: User) {
   try {
     await AsyncStorage.setItem('user', JSON.stringify(user));
-  } catch {
+  } catch (err) {
     console.log(`Error on saving ${user}`);
+    console.log(err);
   }
 }
 
@@ -29,6 +30,7 @@ export async function getUser(): Promise<User> {
   try {
     let user = await AsyncStorage.getItem('user');
     if (user) {
+      console.log(user);
       return JSON.parse(user);
     }
   } catch {}
@@ -37,5 +39,7 @@ export async function getUser(): Promise<User> {
 export async function removeUser() {
   try {
     await AsyncStorage.removeItem('user');
-  } catch {}
+  } catch (err) {
+    console.log(err);
+  }
 }

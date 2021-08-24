@@ -24,9 +24,9 @@ const UserProvider = ({children}: IUserProvider) => {
     await saveUser(user);
   }
 
-  async function handleRemoveUser() {
+  function handleRemoveUser() {
     setUser(null);
-    await removeUser();
+    removeUser();
   }
 
   useEffect(() => {
@@ -39,6 +39,10 @@ const UserProvider = ({children}: IUserProvider) => {
       }
     })();
   }, []);
+
+  useEffect(() => {
+    console.log(user);
+  }, [user]);
 
   return (
     <UserContext.Provider value={{user, handleSetUser, handleRemoveUser}}>

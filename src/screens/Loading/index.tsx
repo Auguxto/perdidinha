@@ -13,11 +13,17 @@ interface ILoading {
 const Loading = ({navigation}: ILoading) => {
   const {user} = useContext(UserContext);
 
+  // hide splashScreen
   useEffect(() => {
     SplashScreen.hide();
+  }, []);
+
+  // navigate user
+  useEffect(() => {
     if (user) {
-      console.log(user);
-      return navigation.navigate('Home');
+      navigation.navigate('Home');
+    } else {
+      navigation.navigate('Enter');
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user]);
