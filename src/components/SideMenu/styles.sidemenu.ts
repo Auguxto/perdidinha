@@ -69,6 +69,42 @@ export const MenuToggler = styled.TouchableOpacity.attrs({
   activeOpacity: 1,
 })``;
 
+export const MenuTabs = styled.View`
+  flex: 1;
+
+  flex-direction: column;
+
+  margin-top: 60px;
+`;
+
+export const Tab = styled.TouchableOpacity.attrs({
+  activeOpacity: 1,
+})<{active?: boolean}>`
+  width: 70%;
+  height: 60px;
+
+  flex-direction: row;
+
+  border-radius: 50px;
+
+  align-items: center;
+
+  padding-left: 20px;
+
+  margin-top: 5px;
+
+  background-color: ${props => (props.active ? '#be5deb' : 'transparent')};
+`;
+
+export const TabText = styled.Text<{active?: boolean}>`
+  font-family: 'Inter';
+  font-size: 18px;
+
+  margin-left: 10px;
+
+  color: ${props => (props.active ? '#FFFFFF' : '#000000')};
+`;
+
 export const LogoutContainer = styled.TouchableOpacity.attrs({
   activeOpacity: 1,
 })`

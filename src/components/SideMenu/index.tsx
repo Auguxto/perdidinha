@@ -1,8 +1,10 @@
-import {UserContext} from '@contexts/UserContext';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import React, {useRef, useEffect, useContext} from 'react';
 import {Animated, Dimensions} from 'react-native';
 import Icon from 'react-native-vector-icons/Feather';
+
+import {MenuContext} from '@contexts/MenuContext';
+import {UserContext} from '@contexts/UserContext';
 
 import {
   AccountAvatar,
@@ -13,8 +15,11 @@ import {
   HeaderContainer,
   LogoutContainer,
   LogoutText,
+  MenuTabs,
   MenuToggler,
   SideMenuContainer,
+  Tab,
+  TabText,
 } from './styles.sidemenu';
 
 interface ISideMenu {
@@ -28,6 +33,7 @@ const SideMenu = ({isOpen, navigation, toggleActive}: ISideMenu) => {
   const windowHeight = Dimensions.get('window').height;
 
   const {user, handleRemoveUser} = useContext(UserContext);
+  const {tabActive} = useContext(MenuContext);
 
   const menuAnim = useRef(
     new Animated.Value(-Math.round((windowWidth * 90) / 100)),
@@ -76,6 +82,40 @@ const SideMenu = ({isOpen, navigation, toggleActive}: ISideMenu) => {
           <Icon size={30} color="#BE5DEB" name="x" />
         </MenuToggler>
       </HeaderContainer>
+      <MenuTabs>
+        <Tab active>
+          <Icon
+            name="key"
+            color={tabActive === 'Home' ? '#FFFFFF' : '#000000'}
+            size={20}
+          />
+          <TabText active>Senhas</TabText>
+        </Tab>
+        <Tab>
+          <Icon
+            name="plus"
+            color={tabActive === 'Manager' ? '#FFFFFF' : '#000000'}
+            size={20}
+          />
+          <TabText>Adicionar senha</TabText>
+        </Tab>
+        <Tab>
+          <Icon
+            name="user"
+            color={tabActive === 'Profile' ? '#FFFFFF' : '#000000'}
+            size={20}
+          />
+          <TabText>Perfil</TabText>
+        </Tab>
+        <Tab>
+          <Icon
+            name="settings"
+            color={tabActive === 'Settings' ? '#FFFFFF' : '#000000'}
+            size={20}
+          />
+          <TabText>Configurações</TabText>
+        </Tab>
+      </MenuTabs>
       <LogoutContainer
         onPress={() => {
           navigation.navigate('Enter');

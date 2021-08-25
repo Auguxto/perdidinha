@@ -5,6 +5,7 @@ import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import CheckBox from '@components/CheckBox';
 
 import {UserContext} from '@contexts/UserContext';
+import {MenuContext} from '@contexts/MenuContext';
 
 import {
   ButtonText,
@@ -33,6 +34,7 @@ const Enter = ({navigation}: IEnter) => {
   const [checked, setChecked] = useState(false);
 
   const {handleSetUser} = useContext(UserContext);
+  const {setTabActive} = useContext(MenuContext);
 
   const windowHeight = Dimensions.get('window').height;
 
@@ -53,9 +55,14 @@ const Enter = ({navigation}: IEnter) => {
   }
 
   useEffect(() => {
+    navigation.addListener('focus', e => {
+      let tab = e.target.split('-')[0];
+      setTabActive(tab);
+    });
     navigation.addListener('beforeRemove', event => {
       event.preventDefault();
     });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [navigation]);
 
   return (

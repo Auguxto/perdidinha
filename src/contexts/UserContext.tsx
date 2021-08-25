@@ -21,7 +21,7 @@ const UserProvider = ({children}: IUserProvider) => {
   async function handleSetUser(name_value: string, biometry_value: boolean) {
     const id = uuid();
     setUser({name: name_value, biometry: biometry_value, id});
-    await saveUser(user);
+    await saveUser({name: name_value, biometry: biometry_value, id});
   }
 
   function handleRemoveUser() {
@@ -39,10 +39,6 @@ const UserProvider = ({children}: IUserProvider) => {
       }
     })();
   }, []);
-
-  useEffect(() => {
-    console.log(user);
-  }, [user]);
 
   return (
     <UserContext.Provider value={{user, handleSetUser, handleRemoveUser}}>

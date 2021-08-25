@@ -8,6 +8,7 @@ import UserProvider from '@contexts/UserContext';
 import Loading from '@screens/Loading';
 import Enter from '@screens/Enter';
 import Home from '@screens/Home';
+import MenuProvider from '@contexts/MenuContext';
 
 const Stack = createNativeStackNavigator();
 
@@ -15,11 +16,15 @@ const App = () => {
   return (
     <NavigationContainer>
       <UserProvider>
-        <Stack.Navigator screenOptions={{headerShown: false}}>
-          <Stack.Screen name="Loading" component={Loading} />
-          <Stack.Screen name="Enter" component={Enter} />
-          <Stack.Screen name="Home" component={Home} />
-        </Stack.Navigator>
+        <MenuProvider>
+          <Stack.Navigator
+            initialRouteName="Loading"
+            screenOptions={{headerShown: false}}>
+            <Stack.Screen name="Loading" component={Loading} />
+            <Stack.Screen name="Enter" component={Enter} />
+            <Stack.Screen name="Home" component={Home} />
+          </Stack.Navigator>
+        </MenuProvider>
       </UserProvider>
     </NavigationContainer>
   );

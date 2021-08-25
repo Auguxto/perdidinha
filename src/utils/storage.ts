@@ -30,7 +30,6 @@ export async function getUser(): Promise<User> {
   try {
     let user = await AsyncStorage.getItem('user');
     if (user) {
-      console.log(user);
       return JSON.parse(user);
     }
   } catch {}
