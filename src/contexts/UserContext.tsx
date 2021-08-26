@@ -1,10 +1,11 @@
-import React, {useState, useEffect, createContext, ReactNode} from 'react';
+import React, {useState, createContext, ReactNode} from 'react';
 import {v4 as uuid} from 'uuid';
 
-import {getUser, removeUser, saveUser} from '@utils/storage';
+import {removeUser, saveUser} from '@utils/storage';
 
 interface IUserContext {
   user: User;
+  load: (user: User) => void;
   handleSetUser: (name_value: string, biometry_value: boolean) => void;
   handleRemoveUser: () => void;
 }
@@ -24,24 +25,17 @@ const UserProvider = ({children}: IUserProvider) => {
     await saveUser({name: name_value, biometry: biometry_value, id});
   }
 
+  function load(local_user: User) {
+    setUser(local_user);
+  }
+
   function handleRemoveUser() {
     setUser(null);
     removeUser();
   }
 
-  useEffect(() => {
-    (async () => {
-      let user_storage = await getUser();
-      if (user_storage) {
-        setUser(user_storage);
-      } else {
-        console.log('No user found on storage');
-      }
-    })();
-  }, []);
-
   return (
-    <UserContext.Provider value={{user, handleSetUser, handleRemoveUser}}>
+    <UserContext.Provider value={{user, load, handleSetUser, handleRemoveUser}}>
       {children}
     </UserContext.Provider>
   );

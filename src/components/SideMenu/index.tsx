@@ -1,10 +1,9 @@
-import {NativeStackNavigationProp} from '@react-navigation/native-stack';
-import React, {useRef, useEffect, useContext} from 'react';
-import {Animated, Dimensions} from 'react-native';
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+import React, {useContext} from 'react';
+import {Dimensions} from 'react-native';
 import Icon from 'react-native-vector-icons/Feather';
 
-import {MenuContext} from '@contexts/MenuContext';
-import {UserContext} from '@contexts/UserContext';
+// import {UserContext} from '@contexts/UserContext';
 
 import {
   AccountAvatar,
@@ -23,51 +22,50 @@ import {
 } from './styles.sidemenu';
 
 interface ISideMenu {
-  isOpen: boolean;
-  toggleActive: () => void;
-  navigation: NativeStackNavigationProp<RootStackNavigation>;
+  // navigation: DrawerNavigationProp<RootStackNavigation>;
 }
 
-const SideMenu = ({isOpen, navigation, toggleActive}: ISideMenu) => {
+const SideMenu = ({navigation}) => {
   const windowWidth = Dimensions.get('window').width;
   const windowHeight = Dimensions.get('window').height;
 
-  const {user, handleRemoveUser} = useContext(UserContext);
-  const {tabActive} = useContext(MenuContext);
+  // const {user, handleRemoveUser} = useContext(UserContext);
 
-  const menuAnim = useRef(
-    new Animated.Value(-Math.round((windowWidth * 90) / 100)),
-  ).current;
+  // const menuAnim = useRef(
+  //   new Animated.Value(-Math.round((windowWidth * 90) / 100)),
+  // ).current;
 
-  const showMenu = () => {
-    Animated.timing(menuAnim, {
-      toValue: 0,
-      duration: 500,
-      useNativeDriver: true,
-    }).start();
-  };
+  // const showMenu = () => {
+  //   Animated.timing(menuAnim, {
+  //     toValue: 0,
+  //     duration: 500,
+  //     useNativeDriver: true,
+  //   }).start();
+  // };
 
-  const hideMenu = () => {
-    Animated.timing(menuAnim, {
-      toValue: -Math.round((windowWidth * 90) / 100),
-      duration: 500,
-      useNativeDriver: true,
-    }).start();
-  };
+  // const hideMenu = () => {
+  //   Animated.timing(menuAnim, {
+  //     toValue: -Math.round((windowWidth * 90) / 100),
+  //     duration: 500,
+  //     useNativeDriver: true,
+  //   }).start();
+  // };
 
-  useEffect(() => {
-    if (isOpen) {
-      showMenu();
-    } else {
-      hideMenu();
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isOpen]);
+  // useEffect(() => {
+  //   if (isOpen) {
+  //     showMenu();
+  //   } else {
+  //     hideMenu();
+  //   }
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, [isOpen]);
+
+  let tabActive = 'Home';
 
   return (
     <SideMenuContainer
-      style={{transform: [{translateX: menuAnim}]}}
-      isOpen={isOpen}
+      // style={{transform: [{translateX: menuAnim}]}}
+      // isOpen={isOpen}
       width={windowWidth}
       height={windowHeight}>
       <HeaderContainer>
@@ -75,51 +73,60 @@ const SideMenu = ({isOpen, navigation, toggleActive}: ISideMenu) => {
           <AccountAvatar />
           <AccountTexts>
             <AccountWelcome>Bem vinda</AccountWelcome>
-            <AccountName>{user.name}</AccountName>
+            <AccountName>Victor</AccountName>
           </AccountTexts>
         </AccountContainer>
-        <MenuToggler onPress={toggleActive}>
+        <MenuToggler>
           <Icon size={30} color="#BE5DEB" name="x" />
         </MenuToggler>
       </HeaderContainer>
       <MenuTabs>
-        <Tab active>
+        <Tab
+          onPress={() => navigation.navigate('Home')}
+          active={tabActive === 'Home' ? true : false}>
           <Icon
             name="key"
             color={tabActive === 'Home' ? '#FFFFFF' : '#000000'}
             size={20}
           />
-          <TabText active>Senhas</TabText>
+          <TabText active={tabActive === 'Home' ? true : false}>Senhas</TabText>
         </Tab>
-        <Tab>
+        <Tab
+          onPress={() => navigation.navigate('Manager')}
+          active={tabActive === 'Manager' ? true : false}>
           <Icon
             name="plus"
             color={tabActive === 'Manager' ? '#FFFFFF' : '#000000'}
             size={20}
           />
-          <TabText>Adicionar senha</TabText>
+          <TabText active={tabActive === 'Manager' ? true : false}>
+            Adicionar senha
+          </TabText>
         </Tab>
-        <Tab>
+        <Tab active={tabActive === 'Profile' ? true : false}>
           <Icon
             name="user"
             color={tabActive === 'Profile' ? '#FFFFFF' : '#000000'}
             size={20}
           />
-          <TabText>Perfil</TabText>
+          <TabText active={tabActive === 'Profile' ? true : false}>
+            Perfil
+          </TabText>
         </Tab>
-        <Tab>
+        <Tab active={tabActive === 'Settings' ? true : false}>
           <Icon
             name="settings"
             color={tabActive === 'Settings' ? '#FFFFFF' : '#000000'}
             size={20}
           />
-          <TabText>Configurações</TabText>
+          <TabText active={tabActive === 'Settings' ? true : false}>
+            Configurações
+          </TabText>
         </Tab>
       </MenuTabs>
       <LogoutContainer
         onPress={() => {
-          navigation.navigate('Enter');
-          handleRemoveUser();
+          // handleRemoveUser();
         }}>
         <Icon name="log-out" size={30} color="#000000" />
         <LogoutText>Sair</LogoutText>

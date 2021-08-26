@@ -2,20 +2,11 @@ import styled from 'styled-components/native';
 
 import Avatar from '../../assets/images/svg/Avatar.svg';
 
-const sideMenuBackground = '#FFFFFF';
 const black = '#000000';
 
-export const SideMenuContainer = styled.View<{
-  width: number;
-  height: number;
-}>`
-  width: ${props => Math.round((props.width * 90) / 100)}px;
-  height: 100%;
-
-  background-color: ${sideMenuBackground};
-
-  border-top-right-radius: 20px;
-  border-bottom-right-radius: 20px;
+export const DrawerContainer = styled.View`
+  display: flex;
+  flex: 1;
 
   padding: 30px;
 `;
@@ -23,6 +14,8 @@ export const SideMenuContainer = styled.View<{
 export const HeaderContainer = styled.View`
   width: 100%;
   height: 60px;
+
+  background: white;
 
   flex-direction: row;
 
@@ -63,17 +56,17 @@ export const MenuToggler = styled.TouchableOpacity.attrs({
   activeOpacity: 1,
 })``;
 
-export const MenuTabs = styled.View`
-  flex: 1;
+// ===========================================================
 
+export const MenuTabs = styled.View`
   flex-direction: column;
 
-  margin-top: 60px;
+  margin-top: 50px;
 `;
 
 export const Tab = styled.TouchableOpacity.attrs({
   activeOpacity: 1,
-})<{active: boolean}>`
+})`
   width: 70%;
   height: 60px;
 
@@ -87,7 +80,7 @@ export const Tab = styled.TouchableOpacity.attrs({
 
   margin-top: 5px;
 
-  background-color: ${props => (props.active ? '#be5deb' : 'transparent')};
+  background-color: transparent;
 `;
 
 export const TabText = styled.Text<{active?: boolean}>`
@@ -102,8 +95,10 @@ export const TabText = styled.Text<{active?: boolean}>`
 export const LogoutContainer = styled.TouchableOpacity.attrs({
   activeOpacity: 1,
 })`
+  flex: 1;
+
   flex-direction: row;
-  align-items: center;
+  align-items: flex-end;
 `;
 
 export const LogoutText = styled.Text`

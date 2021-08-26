@@ -1,6 +1,8 @@
+import 'react-native-gesture-handler';
 import 'react-native-get-random-values';
 import React from 'react';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import {Dimensions} from 'react-native';
+import {createDrawerNavigator} from '@react-navigation/drawer';
 import {NavigationContainer} from '@react-navigation/native';
 
 import UserProvider from '@contexts/UserContext';
@@ -8,23 +10,41 @@ import UserProvider from '@contexts/UserContext';
 import Loading from '@screens/Loading';
 import Enter from '@screens/Enter';
 import Home from '@screens/Home';
-import MenuProvider from '@contexts/MenuContext';
+import AddPassword from '@screens/AddPassword';
 
-const Stack = createNativeStackNavigator();
+import DrawerMenu from '@components/DrawerMenu';
+
+const Drawer = createDrawerNavigator();
 
 const App = () => {
+  const windowWidth = Dimensions.get('window').width;
+  const windowHeight = Dimensions.get('window').height;
+
   return (
     <NavigationContainer>
       <UserProvider>
-        <MenuProvider>
-          <Stack.Navigator
-            initialRouteName="Loading"
-            screenOptions={{headerShown: false}}>
-            <Stack.Screen name="Loading" component={Loading} />
-            <Stack.Screen name="Enter" component={Enter} />
-            <Stack.Screen name="Home" component={Home} />
-          </Stack.Navigator>
-        </MenuProvider>
+        <Drawer.Navigator
+          screenOptions={{
+            headerShown: false,
+            drawerStyle: {
+              width: Math.round((windowWidth * 90) / 100),
+              height: windowHeight,
+              borderTopRightRadius: 20,
+              borderBottomRightRadius: 20,
+            },
+          }}
+          drawerContent={props => (
+            <DrawerMenu
+              state={props.state}
+              descriptors={props.descriptors}
+              navigation={props.navigation}
+            />
+          )}>
+          <Drawer.Screen name="Loading" component={Loading} />
+          <Drawer.Screen name="Enter" component={Enter} />
+          <Drawer.Screen name="Home" component={Home} />
+          <Drawer.Screen name="AddPassword" component={AddPassword} />
+        </Drawer.Navigator>
       </UserProvider>
     </NavigationContainer>
   );

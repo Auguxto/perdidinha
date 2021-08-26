@@ -1,7 +1,13 @@
-type RootStackNavigation = {
+type RootDrawerNavigation = {
   Loading: undefined;
   Enter: undefined;
   Home: undefined;
+  AddPassword: undefined;
+  RemovePassword: undefined;
+};
+
+type Rootest = {
+  Teste: undefined;
 };
 
 interface User {
