@@ -1,10 +1,12 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import Icon from 'react-native-vector-icons/Feather';
 import {DrawerNavigationState, ParamListBase} from '@react-navigation/native';
 import {
   DrawerDescriptorMap,
   DrawerNavigationHelpers,
 } from '@react-navigation/drawer/lib/typescript/src/types';
+
+import {UserContext} from '@contexts/UserContext';
 
 import {
   HeaderContainer,
@@ -29,6 +31,8 @@ interface Props {
 }
 
 const DrawerMenu = ({navigation}: Props) => {
+  const {user, handleRemoveUser} = useContext(UserContext);
+
   return (
     <DrawerContainer>
       <HeaderContainer>
@@ -36,7 +40,7 @@ const DrawerMenu = ({navigation}: Props) => {
           <AccountAvatar />
           <AccountTexts>
             <AccountWelcome>Bem vinda</AccountWelcome>
-            <AccountName>Victor</AccountName>
+            <AccountName>{user ? user.name : ''}</AccountName>
           </AccountTexts>
         </AccountContainer>
         <MenuToggler onPress={() => navigation.toggleDrawer()}>
@@ -65,7 +69,11 @@ const DrawerMenu = ({navigation}: Props) => {
           <TabText>Configurações</TabText>
         </Tab>
       </MenuTabs>
-      <LogoutContainer>
+      <LogoutContainer
+        onPress={() => {
+          handleRemoveUser();
+          navigation.navigate('Enter');
+        }}>
         <Icon name="log-out" size={30} color="#000000" />
         <LogoutText>Sair</LogoutText>
       </LogoutContainer>
