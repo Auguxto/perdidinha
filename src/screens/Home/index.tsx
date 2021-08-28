@@ -1,14 +1,20 @@
-import MenuToggler from '@components/MenuToggler';
 import React from 'react';
-import {Text} from 'react-native';
 
-import {HomeContainer} from './styles.home';
+import MenuToggler from '@components/MenuToggler';
+import Password from '@components/Password';
+
+import {HomeCard, HomeContainer, HomeContent} from './styles.home';
 
 const Home = ({navigation}) => {
   return (
     <HomeContainer>
       <MenuToggler onPress={() => navigation.toggleDrawer()} />
-      <Text>Home</Text>
+      <HomeContent>
+        <HomeCard />
+        <Password />
+        <Password />
+        <Password />
+      </HomeContent>
     </HomeContainer>
   );
 };
