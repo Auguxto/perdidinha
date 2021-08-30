@@ -40,8 +40,16 @@ const App = () => {
               navigation={props.navigation}
             />
           )}>
-          <Drawer.Screen name="Loading" component={Loading} />
-          <Drawer.Screen name="Enter" component={Enter} />
+          <Drawer.Screen
+            options={{gestureEnabled: false}}
+            name="Loading"
+            component={Loading}
+          />
+          <Drawer.Screen
+            options={{gestureEnabled: false}}
+            name="Enter"
+            component={Enter}
+          />
           <Drawer.Screen name="Home" component={Home} />
           <Drawer.Screen name="AddPassword" component={AddPassword} />
         </Drawer.Navigator>

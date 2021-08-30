@@ -57,10 +57,6 @@ const DrawerMenu = ({navigation}: Props) => {
           <TabText>Adicionar senha</TabText>
         </Tab>
         <Tab>
-          <Icon name="trash" color="#000000" size={20} />
-          <TabText>Remover senha</TabText>
-        </Tab>
-        <Tab>
           <Icon name="user" color="#000000" size={20} />
           <TabText>Perfil</TabText>
         </Tab>
