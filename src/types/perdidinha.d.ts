@@ -15,3 +15,16 @@ interface User {
   name: string;
   biometry: boolean;
 }
+
+type IconName =
+  | 'bradesco'
+  | 'facebook'
+  | 'google'
+  | 'instagram'
+  | 'inter'
+  | 'linkedin'
+  | 'nubank'
+  | 'paypal'
+  | 'spotify'
+  | 'twitter'
+  | 'visa';

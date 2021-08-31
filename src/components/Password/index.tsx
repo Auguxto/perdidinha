@@ -1,10 +1,9 @@
 import React, {useState, useRef, useEffect} from 'react';
 import Icon from 'react-native-vector-icons/Feather';
-import FontIcon from 'react-native-vector-icons/FontAwesome';
-import {StyleSheet, Animated} from 'react-native';
+import {Animated} from 'react-native';
+import {Easing} from 'react-native-reanimated';
 
 import {
-  PasswordIcon,
   PasswordContainer,
   PasswordName,
   PasswordValue,
@@ -13,10 +12,27 @@ import {
   PasswordLogin,
   Header,
   Bottom,
+  DeleteButton,
+  BottomContainer,
 } from './styles.password';
-import {Easing} from 'react-native-reanimated';
 
-const Password = () => {
+import PasswordIcon from '@components/PasswordIcon';
+
+interface IPassword {
+  name: string;
+  username?: string;
+  password: string;
+  iconName: IconName;
+  backgroundColor: string;
+}
+
+const Password = ({
+  name,
+  username,
+  password,
+  iconName,
+  backgroundColor,
+}: IPassword) => {
   const [viewPassword, setViewPassword] = useState(false);
 
   function toggleViewPassword() {
@@ -26,10 +42,8 @@ const Password = () => {
   useEffect(() => {
     if (viewPassword) {
       showPassword();
-      showValue();
     } else {
       hidePassword();
-      hideValue();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [viewPassword]);
@@ -41,21 +55,9 @@ const Password = () => {
     Animated.timing(PasswordAnim, {
       toValue: 150,
       duration: 150,
-      easing: Easing.linear,
+      easing: Easing.circle,
       useNativeDriver: false,
     }).start();
-  };
-
-  const hidePassword = () => {
-    Animated.timing(PasswordAnim, {
-      toValue: 100,
-      duration: 150,
-      easing: Easing.linear,
-      useNativeDriver: false,
-    }).start();
-  };
-
-  const showValue = () => {
     Animated.timing(PasswordValueAnim, {
       toValue: 1,
       duration: 500,
@@ -64,7 +66,13 @@ const Password = () => {
     }).start();
   };
 
-  const hideValue = () => {
+  const hidePassword = () => {
+    Animated.timing(PasswordAnim, {
+      toValue: 100,
+      duration: 150,
+      easing: Easing.circle,
+      useNativeDriver: false,
+    }).start();
     Animated.timing(PasswordValueAnim, {
       toValue: 0,
       duration: 500,
@@ -74,14 +82,12 @@ const Password = () => {
   };
 
   return (
-    <PasswordContainer style={[styles.shadow, {height: PasswordAnim}]}>
+    <PasswordContainer style={[{height: PasswordAnim}]}>
       <Header>
-        <PasswordIcon>
-          <FontIcon name="facebook" size={30} color="#FFFFFF" />
-        </PasswordIcon>
+        <PasswordIcon iconName={iconName} backgroundColor={backgroundColor} />
         <Texts>
-          <PasswordName>Google</PasswordName>
-          <PasswordLogin>victoraugusferreira@gmail.com</PasswordLogin>
+          <PasswordName>{name}</PasswordName>
+          {username && <PasswordLogin>{username}</PasswordLogin>}
         </Texts>
         <PasswordViewToggler
           onPress={() => {
@@ -89,33 +95,25 @@ const Password = () => {
           }}>
           <Icon
             name={viewPassword ? 'chevron-up' : 'chevron-down'}
-            color="#191716"
+            color="#FFFFFF"
             size={30}
           />
         </PasswordViewToggler>
       </Header>
-      <Bottom>
+      <BottomContainer>
         {viewPassword && (
-          <PasswordValue style={{opacity: PasswordValueAnim}}>
-            923yr2hg3rp
-          </PasswordValue>
+          <Bottom>
+            <PasswordValue style={{opacity: PasswordValueAnim}}>
+              {password}
+            </PasswordValue>
+            <DeleteButton>
+              <Icon name="trash-2" color="#FFFFFF" size={25} />
+            </DeleteButton>
+          </Bottom>
         )}
-      </Bottom>
+      </BottomContainer>
     </PasswordContainer>
   );
 };
-
-const styles = StyleSheet.create({
-  shadow: {
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 3.84,
-    elevation: 5,
-  },
-});
 
 export default Password;

@@ -12,21 +12,35 @@ export const PasswordContainer = styled(Animated.View)`
 
   border-radius: 20px;
 
-  background-color: #ffffff;
+  background-color: rgba(0, 0, 0, 0.3);
 `;
 
 export const Header = styled.View`
   flex-direction: row;
 `;
 
-export const Bottom = styled.View`
+export const BottomContainer = styled.View`
+  flex: 1;
   flex-direction: row;
 
-  justify-content: center;
-  align-items: center;
+  align-items: flex-end;
 
   width: 100%;
 `;
+
+export const Bottom = styled.View`
+  flex: 1;
+  flex-direction: row;
+
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 10px 0;
+`;
+
+export const DeleteButton = styled.TouchableOpacity.attrs({
+  activeOpacity: 1,
+})``;
 
 export const PasswordIcon = styled.View`
   width: 60px;
@@ -44,32 +58,30 @@ export const Texts = styled.View`
   flex: 1;
   flex-direction: column;
 
+  justify-content: space-between;
+
   margin-left: 10px;
 `;
 
 export const PasswordName = styled.Text`
-  font-family: 'Inter-Light';
+  font-family: 'Inter';
   font-size: 16px;
 
-  margin-top: 5px;
-
-  color: #191716;
+  color: #ffffff;
 `;
 
 export const PasswordLogin = styled.Text`
-  font-family: 'Inter-Light';
+  font-family: 'Inter';
   font-size: 12px;
 
-  color: #191716;
+  color: #ffffff;
 `;
 
 export const PasswordValue = styled(Animated.Text)`
   font-family: 'Inter';
   font-size: 16px;
 
-  margin-top: 20px;
-
-  color: #191716;
+  color: #ffffff;
 `;
 
 export const PasswordViewToggler = styled.TouchableOpacity.attrs({

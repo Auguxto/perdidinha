@@ -64,7 +64,7 @@ export const AddButton = styled.TouchableOpacity.attrs({
   border-radius: 10px;
 `;
 
-export const PasswordsContainer = styled.View`
+export const PasswordsContainer = styled.ScrollView`
   flex: 1;
 
   width: 90%;
