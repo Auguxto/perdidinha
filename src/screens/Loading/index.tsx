@@ -20,9 +20,6 @@ const Loading = ({navigation}: ILoading) => {
     SplashScreen.hide();
 
     (async () => {
-      navigation.setOptions({
-        gestureEnabled: false,
-      });
       let user_storage = await getUser();
       if (user_storage) {
         load(user_storage);

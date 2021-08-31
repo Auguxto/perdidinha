@@ -10,7 +10,7 @@ interface IMenuToggler {
 const MenuToggler = ({onPress}: IMenuToggler) => {
   return (
     <MenuTogglerButton onPress={onPress}>
-      <Icon name="menu" color="#BE5DEB" size={40} />
+      <Icon name="menu" color="#FFFFFF" size={40} />
     </MenuTogglerButton>
   );
 };

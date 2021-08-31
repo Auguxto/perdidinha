@@ -26,6 +26,7 @@ const App = () => {
         <Drawer.Navigator
           screenOptions={{
             headerShown: false,
+            gestureEnabled: false,
             drawerStyle: {
               width: Math.round((windowWidth * 90) / 100),
               height: windowHeight,
@@ -40,16 +41,8 @@ const App = () => {
               navigation={props.navigation}
             />
           )}>
-          <Drawer.Screen
-            options={{gestureEnabled: false}}
-            name="Loading"
-            component={Loading}
-          />
-          <Drawer.Screen
-            options={{gestureEnabled: false}}
-            name="Enter"
-            component={Enter}
-          />
+          <Drawer.Screen name="Loading" component={Loading} />
+          <Drawer.Screen name="Enter" component={Enter} />
           <Drawer.Screen name="Home" component={Home} />
           <Drawer.Screen name="AddPassword" component={AddPassword} />
         </Drawer.Navigator>
