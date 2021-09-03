@@ -1,27 +1,22 @@
-import React from 'react';
-import Icon from 'react-native-vector-icons/Feather';
+import React, {useEffect, useState} from 'react';
 
 import Header from '@components/Header';
 import Password from '@components/Password';
 
-import {
-  AddButton,
-  HomeContainer,
-  PasswordsContainer,
-  Search,
-  SearchContainer,
-} from './styles.home';
+import {HomeContainer, PasswordsContainer} from './styles.home';
+import Categories from '@components/Categories';
 
 const Home = ({navigation}) => {
+  const [categorie, setCategorie] = useState('Todos');
+
+  useEffect(() => {
+    console.log(categorie);
+  }, [categorie]);
+
   return (
     <HomeContainer>
       <Header navigation={navigation} />
-      <SearchContainer>
-        <Search />
-        <AddButton>
-          <Icon name="plus" size={26} color="#FFFFFF" />
-        </AddButton>
-      </SearchContainer>
+      <Categories categorie={categorie} setCategorie={setCategorie} />
       <PasswordsContainer showsVerticalScrollIndicator={false}>
         <Password
           name="Facebook"
