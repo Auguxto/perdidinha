@@ -13,7 +13,7 @@ import {
 
 interface ICategories {
   categorie: string;
-  setCategorie: (categorie: string) => void;
+  setCategorie: (categorie: Categories) => void;
 }
 
 const Categories = ({setCategorie}: ICategories) => {
@@ -25,7 +25,7 @@ const Categories = ({setCategorie}: ICategories) => {
 
   return (
     <CategoriesContainer>
-      <Title>Categories</Title>
+      <Title>Categorias</Title>
       <CategoriesButtons
         showsHorizontalScrollIndicator={false}
         horizontal

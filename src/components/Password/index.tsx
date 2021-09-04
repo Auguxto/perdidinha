@@ -1,119 +1,105 @@
-import React, {useState, useRef, useEffect} from 'react';
+import React, {ComponentProps, useReducer, useState} from 'react';
+import {View, StyleSheet} from 'react-native';
 import Icon from 'react-native-vector-icons/Feather';
-import {Animated} from 'react-native';
-import {Easing} from 'react-native-reanimated';
+import {format} from 'date-fns';
+import ptBR from 'date-fns/locale/pt-BR';
 
 import {
   PasswordContainer,
-  PasswordName,
-  PasswordValue,
-  PasswordViewToggler,
-  Texts,
-  PasswordLogin,
+  AnimtedContainer,
   Header,
+  PasswordInfos,
+  Name,
+  EnterValue,
+  PasswordDate,
+  Buttons,
+  Favorite,
+  ToggleView,
   Bottom,
-  DeleteButton,
-  BottomContainer,
+  PasswordValue,
+  Delete,
 } from './styles.password';
 
 import PasswordIcon from '@components/PasswordIcon';
 
-interface IPassword {
-  name: string;
-  username?: string;
-  password: string;
-  iconName: IconName;
-  backgroundColor: string;
-}
+const useLayout = () => {
+  const [layout, setLayout] = useState({
+    height: 0,
+  });
+  const onLayout: ComponentProps<typeof View>['onLayout'] = ({nativeEvent}) => {
+    setLayout(nativeEvent.layout);
+  };
+
+  return [layout, onLayout] as const;
+};
 
 const Password = ({
   name,
-  username,
-  password,
-  iconName,
-  backgroundColor,
-}: IPassword) => {
-  const [viewPassword, setViewPassword] = useState(false);
+  enter_value,
+  password_value,
+  icon,
+  background,
+  favorite,
+  updated_at,
+}: Password) => {
+  const [{height}, onLayout] = useLayout();
 
-  function toggleViewPassword() {
-    setViewPassword(!viewPassword);
-  }
+  const [viewPassword, toggleViewPassword] = useReducer(s => !s, false);
 
-  useEffect(() => {
-    if (viewPassword) {
-      showPassword();
-    } else {
-      hidePassword();
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [viewPassword]);
-
-  const PasswordAnim = useRef(new Animated.Value(100)).current;
-  const PasswordValueAnim = useRef(new Animated.Value(0)).current;
-
-  const showPassword = () => {
-    Animated.timing(PasswordAnim, {
-      toValue: 150,
-      duration: 150,
-      easing: Easing.circle,
-      useNativeDriver: false,
-    }).start();
-    Animated.timing(PasswordValueAnim, {
-      toValue: 1,
-      duration: 500,
-      easing: Easing.bounce,
-      useNativeDriver: true,
-    }).start();
-  };
-
-  const hidePassword = () => {
-    Animated.timing(PasswordAnim, {
-      toValue: 100,
-      duration: 150,
-      easing: Easing.circle,
-      useNativeDriver: false,
-    }).start();
-    Animated.timing(PasswordValueAnim, {
-      toValue: 0,
-      duration: 500,
-      easing: Easing.bounce,
-      useNativeDriver: true,
-    }).start();
-  };
+  const date = format(updated_at, "'Editado em:' dd/MM/yyyy HH:mm", {
+    locale: ptBR,
+  });
 
   return (
-    <PasswordContainer style={[{height: PasswordAnim}]}>
-      <Header>
-        <PasswordIcon iconName={iconName} backgroundColor={backgroundColor} />
-        <Texts>
-          <PasswordName>{name}</PasswordName>
-          {username && <PasswordLogin>{username}</PasswordLogin>}
-        </Texts>
-        <PasswordViewToggler
-          onPress={() => {
-            toggleViewPassword();
-          }}>
-          <Icon
-            name={viewPassword ? 'chevron-up' : 'chevron-down'}
-            color="#FFFFFF"
-            size={30}
-          />
-        </PasswordViewToggler>
-      </Header>
-      <BottomContainer>
-        {viewPassword && (
-          <Bottom>
-            <PasswordValue style={{opacity: PasswordValueAnim}}>
-              {password}
-            </PasswordValue>
-            <DeleteButton>
-              <Icon name="trash-2" color="#FFFFFF" size={25} />
-            </DeleteButton>
-          </Bottom>
-        )}
-      </BottomContainer>
+    <PasswordContainer style={styles.shadow} animate={{height}}>
+      <AnimtedContainer onLayout={onLayout} open={viewPassword}>
+        <Header>
+          <PasswordIcon iconName={icon} backgroundColor={background} />
+          <PasswordInfos>
+            <Name>{name}</Name>
+            <EnterValue>{enter_value}</EnterValue>
+            <PasswordDate>{date}</PasswordDate>
+          </PasswordInfos>
+          <Buttons>
+            <Favorite>
+              <Icon
+                name="star"
+                size={26}
+                color={favorite ? '#F8EA75' : '#898989'}
+              />
+            </Favorite>
+            <ToggleView onPress={toggleViewPassword}>
+              <Icon
+                name={viewPassword ? 'chevron-up' : 'chevron-down'}
+                size={26}
+                color="#898989"
+              />
+            </ToggleView>
+          </Buttons>
+        </Header>
+        <Bottom>
+          <PasswordValue>{password_value}</PasswordValue>
+          <Delete>
+            <Icon name="trash-2" size={26} color="#898989" />
+          </Delete>
+        </Bottom>
+      </AnimtedContainer>
     </PasswordContainer>
   );
 };
+
+const styles = StyleSheet.create({
+  shadow: {
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 3,
+    },
+    shadowOpacity: 0.29,
+    shadowRadius: 4.65,
+
+    elevation: 7,
+  },
+});
 
 export default Password;

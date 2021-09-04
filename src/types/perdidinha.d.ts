@@ -35,6 +35,15 @@ type IconName =
   | 'casasbahia'
   | 'netshoes';
 
+type Categories =
+  | 'Todos'
+  | 'Cartão'
+  | 'Site'
+  | 'Banco'
+  | 'Rede Social'
+  | 'Aplicativo'
+  | 'Outros';
+
 interface User {
   id: string;
   name: string;
@@ -47,8 +56,9 @@ interface Password {
   enter_value: string;
   password_value: string;
   favorite: boolean;
-  icon: string;
+  icon: IconName;
   background: string;
+  categorie: Categories;
   created_at: number;
   updated_at: number;
 }

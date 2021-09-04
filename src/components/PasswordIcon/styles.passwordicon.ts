@@ -9,8 +9,6 @@ export const PasswordIconContainer = styled.View<{
   background-color: ${props =>
     props.backgroundColor ? props.backgroundColor : 'transparent'};
 
-  padding: 10px;
-
   border-radius: 10px;
 
   overflow: hidden;
