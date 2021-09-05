@@ -6,7 +6,7 @@ import ptBR from 'date-fns/locale/pt-BR';
 
 import {
   PasswordContainer,
-  AnimtedContainer,
+  AnimatedContainer,
   Header,
   PasswordInfos,
   Name,
@@ -52,7 +52,7 @@ const Password = ({
 
   return (
     <PasswordContainer style={styles.shadow} animate={{height}}>
-      <AnimtedContainer onLayout={onLayout} open={viewPassword}>
+      <AnimatedContainer onLayout={onLayout} open={viewPassword}>
         <Header>
           <PasswordIcon iconName={icon} backgroundColor={background} />
           <PasswordInfos>
@@ -83,7 +83,7 @@ const Password = ({
             <Icon name="trash-2" size={26} color="#898989" />
           </Delete>
         </Bottom>
-      </AnimtedContainer>
+      </AnimatedContainer>
     </PasswordContainer>
   );
 };

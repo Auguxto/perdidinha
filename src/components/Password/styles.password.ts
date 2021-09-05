@@ -13,7 +13,7 @@ export const PasswordContainer = styled(MotiView)`
   overflow: hidden;
 `;
 
-export const AnimtedContainer = styled.View<{open: boolean}>`
+export const AnimatedContainer = styled.View<{open: boolean}>`
   height: ${props => (props.open ? '150px' : '100px')};
 `;
 
