@@ -1,6 +1,6 @@
 import React, {useEffect, useContext} from 'react';
 import SplashScreen from 'react-native-splash-screen';
-import {NativeStackNavigationProp} from '@react-navigation/native-stack/lib/typescript/src/types';
+import {DrawerNavigationProp} from '@react-navigation/drawer';
 
 import {LoadingContainer, LoadingText} from './styles.loading';
 
@@ -9,7 +9,7 @@ import {UserContext} from '@contexts/UserContext';
 import {getUser} from '@utils/storage';
 
 interface ILoading {
-  navigation: NativeStackNavigationProp<RootDrawerNavigation, 'Loading'>;
+  navigation: DrawerNavigationProp<RootDrawerNavigation, 'Loading'>;
 }
 
 const Loading = ({navigation}: ILoading) => {
@@ -32,6 +32,12 @@ const Loading = ({navigation}: ILoading) => {
     })();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  useEffect(() => {
+    navigation.addListener('beforeRemove', event => {
+      event.preventDefault();
+    });
+  }, [navigation]);
 
   return (
     <LoadingContainer>

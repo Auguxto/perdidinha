@@ -1,6 +1,6 @@
-import React, {useState, useRef, useEffect, useContext} from 'react';
+import React, {useState, useRef, useContext} from 'react';
 import {Animated, Dimensions} from 'react-native';
-import {NativeStackNavigationProp} from '@react-navigation/native-stack';
+import {DrawerNavigationProp} from '@react-navigation/drawer';
 
 import CheckBox from '@components/CheckBox';
 
@@ -24,7 +24,7 @@ import {
 } from './styled.enter';
 
 interface IEnter {
-  navigation: NativeStackNavigationProp<RootStackNavigation, 'Enter'>;
+  navigation: DrawerNavigationProp<RootDrawerNavigation, 'Enter'>;
 }
 
 const Enter = ({navigation}: IEnter) => {
@@ -52,12 +52,6 @@ const Enter = ({navigation}: IEnter) => {
       navigation.navigate('Home');
     }
   }
-
-  useEffect(() => {
-    navigation.addListener('beforeRemove', event => {
-      event.preventDefault();
-    });
-  }, [navigation]);
 
   return (
     <EnterContainer behavior="height">
