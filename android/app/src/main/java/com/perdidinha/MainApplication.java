@@ -37,9 +37,9 @@ public class MainApplication extends Application implements ReactApplication {
         }
 
         @Override
-      protected JSIModulePackage getJSIModulePackage() {
-        return new ReanimatedJSIModulePackage();
-      }
+        protected JSIModulePackage getJSIModulePackage() {
+          return new ReanimatedJSIModulePackage();
+        }
       };
 
   @Override

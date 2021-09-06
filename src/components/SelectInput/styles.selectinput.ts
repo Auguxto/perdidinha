@@ -2,8 +2,8 @@ import styled from 'styled-components/native';
 import {FlatList} from 'react-native';
 import {View as MotiView} from 'moti';
 
-export const SelectInputContainer = styled(MotiView)`
-  width: 90%;
+export const SelectInputContainer = styled(MotiView)<{width?: string}>`
+  width: ${props => (props.width ? props.width : '90%')};
 
   margin: 0px auto;
   margin-bottom: 20px;
@@ -41,9 +41,9 @@ export const SelectName = styled.Text`
 
 export const ToggleSelectOpen = styled.TouchableOpacity``;
 
-export const Bottom = styled(FlatList as new () => FlatList<Categorie | any>)`
+export const Bottom = styled(FlatList as new () => FlatList<any>)`
   width: 100%;
-  height: auto;
+  height: ${65 * 3}px;
 `;
 
 export const SelectItem = styled.TouchableOpacity`

@@ -28,6 +28,117 @@ import shopee from '@assets/images/png/shopee.png';
 import tiktok from '@assets/images/png/tiktok.png';
 import vsco from '@assets/images/png/vsco.png';
 
+export const icons = [
+  {
+    id: '1',
+    name: 'bradesco',
+  },
+  {
+    id: '2',
+    name: 'facebook',
+  },
+  {
+    id: '3',
+    name: 'google',
+  },
+  {
+    id: '4',
+    name: 'instagram',
+  },
+  {
+    id: '5',
+    name: 'inter',
+  },
+  {
+    id: '6',
+    name: 'linkedin',
+  },
+  {
+    id: '7',
+    name: 'nubank',
+  },
+  {
+    id: '8',
+    name: 'paypal',
+  },
+  {
+    id: '9',
+    name: 'spotify',
+  },
+  {
+    id: '10',
+    name: 'twitter',
+  },
+  {
+    id: '11',
+    name: 'visa',
+  },
+  {
+    id: '12',
+    name: 'bancodobrasil',
+  },
+  {
+    id: '13',
+    name: 'magalu',
+  },
+  {
+    id: '14',
+    name: 'mercadolivre',
+  },
+  {
+    id: '15',
+    name: 'clue',
+  },
+  {
+    id: '16',
+    name: 'vsco',
+  },
+  {
+    id: '17',
+    name: 'serasa',
+  },
+  {
+    id: '18',
+    name: 'tiktok',
+  },
+  {
+    id: '19',
+    name: 'carteiradetrabalho',
+  },
+  {
+    id: '20',
+    name: 'carteirademotorista',
+  },
+  {
+    id: '21',
+    name: 'americanas',
+  },
+  {
+    id: '22',
+    name: 'primevideo',
+  },
+  {
+    id: '23',
+    name: 'pinterest',
+  },
+  {
+    id: '24',
+    name: 'mastercard',
+  },
+  {
+    id: '25',
+    name: 'shopee',
+  },
+  {
+    id: '26',
+    name: 'casasbahia',
+  },
+  {
+    id: '27',
+    name: 'netshoes',
+  },
+];
+
 export default function getIcon(iconName: IconName): ImageSourcePropType {
   switch (iconName) {
     case 'bradesco':

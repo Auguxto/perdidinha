@@ -17,6 +17,7 @@ interface ISelectInput {
   data: any[];
   selected: string;
   onSelect: (selected: string) => void;
+  width?: string;
 }
 
 const useLayout = () => {
@@ -30,8 +31,7 @@ const useLayout = () => {
   return [layout, onLayout] as const;
 };
 
-const SelectInput = ({data, selected, onSelect}: ISelectInput) => {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+const SelectInput = ({data, selected, onSelect, width}: ISelectInput) => {
   const [{height}, onLayout] = useLayout();
 
   const [open, toggleOpen] = useReducer(s => !s, false);
@@ -49,7 +49,14 @@ const SelectInput = ({data, selected, onSelect}: ISelectInput) => {
   };
 
   return (
-    <SelectInputContainer style={styles.shadow}>
+    <SelectInputContainer
+      width={width}
+      style={styles.shadow}
+      animate={{height}}
+      transition={{
+        type: 'timing',
+        duration: 350,
+      }}>
       <AnimatedContainer onLayout={onLayout} open={open}>
         <Header>
           <SelectName>{selected}</SelectName>
@@ -62,6 +69,7 @@ const SelectInput = ({data, selected, onSelect}: ISelectInput) => {
           </ToggleSelectOpen>
         </Header>
         <Bottom
+          showsVerticalScrollIndicator={false}
           data={data}
           renderItem={renderItem}
           keyExtractor={item => item.id}

@@ -21,7 +21,7 @@ const Header = ({navigation}: IHeader) => {
   return (
     <HeaderContainer>
       <Toggler onPress={() => navigation.toggleDrawer()} />
-      <HelloUser>Olá, {user.name}</HelloUser>
+      <HelloUser>Olá, {user ? user.name : ' '}</HelloUser>
       <Today>{date}</Today>
     </HeaderContainer>
   );

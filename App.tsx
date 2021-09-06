@@ -26,7 +26,7 @@ const App = () => {
         <Drawer.Navigator
           screenOptions={{
             headerShown: false,
-            gestureEnabled: false,
+            swipeEnabled: false,
             drawerStyle: {
               width: Math.round((windowWidth * 90) / 100),
               height: windowHeight,

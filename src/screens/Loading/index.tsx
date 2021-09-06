@@ -33,12 +33,6 @@ const Loading = ({navigation}: ILoading) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  useEffect(() => {
-    navigation.addListener('beforeRemove', event => {
-      event.preventDefault();
-    });
-  }, [navigation]);
-
   return (
     <LoadingContainer>
       <LoadingText>Carregando ...</LoadingText>
