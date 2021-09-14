@@ -73,12 +73,14 @@ const BankInput = ({
       <S.Input
         style={styles.shadow}
         value={agency}
+        keyboardType="numeric"
         onChangeText={setAgency}
         placeholder="Agencia"
       />
       <S.Input
         style={styles.shadow}
         value={account}
+        keyboardType="numeric"
         onChangeText={setAccount}
         placeholder="Conta com digito"
       />

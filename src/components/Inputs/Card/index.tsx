@@ -74,6 +74,7 @@ const CardInput = ({
       <S.Input
         style={styles.shadow}
         value={number}
+        keyboardType="numeric"
         onChangeText={setNumber}
         placeholder="Número"
       />
@@ -86,12 +87,14 @@ const CardInput = ({
       <S.Input
         style={styles.shadow}
         value={password}
+        keyboardType="numeric"
         onChangeText={setPassword}
         placeholder="Senha"
       />
       <S.Input
         style={styles.shadow}
         value={code}
+        keyboardType="numeric"
         onChangeText={setCode}
         placeholder="Codigo se segurança"
       />
