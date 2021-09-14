@@ -139,7 +139,7 @@ export const icons = [
   },
 ];
 
-export default function getIcon(iconName: IconName): ImageSourcePropType {
+export default function getIcon(iconName: string): ImageSourcePropType {
   switch (iconName) {
     case 'bradesco':
       return bradesco;

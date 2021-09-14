@@ -1,8 +1,6 @@
-import React, {ComponentProps, useReducer, useState} from 'react';
+import React, {ComponentProps, useContext, useReducer, useState} from 'react';
 import {View, StyleSheet} from 'react-native';
 import Icon from 'react-native-vector-icons/Feather';
-import {format} from 'date-fns';
-import ptBR from 'date-fns/locale/pt-BR';
 
 import {
   PasswordContainer,
@@ -11,7 +9,7 @@ import {
   PasswordInfos,
   Name,
   EnterValue,
-  PasswordDate,
+  SecondValue,
   Buttons,
   Favorite,
   ToggleView,
@@ -21,6 +19,7 @@ import {
 } from './styles.password';
 
 import PasswordIcon from '@components/PasswordIcon';
+import {UserContext} from '@contexts/UserContext';
 
 const useLayout = () => {
   const [layout, setLayout] = useState({
@@ -34,21 +33,21 @@ const useLayout = () => {
 };
 
 const Password = ({
+  id,
   name,
   enter_value,
   password_value,
   icon,
   background,
   favorite,
-  updated_at,
+  second_value,
 }: Password) => {
   const [{height}, onLayout] = useLayout();
 
   const [viewPassword, toggleViewPassword] = useReducer(s => !s, false);
 
-  const date = format(updated_at, "'Editado em:' dd/MM/yyyy HH:mm", {
-    locale: ptBR,
-  });
+  const {handleRemovePassword, handleFavoritePassword} =
+    useContext(UserContext);
 
   return (
     <PasswordContainer style={styles.shadow} animate={{height}}>
@@ -58,10 +57,13 @@ const Password = ({
           <PasswordInfos>
             <Name>{name}</Name>
             <EnterValue>{enter_value}</EnterValue>
-            <PasswordDate>{date}</PasswordDate>
+            {second_value && <SecondValue>{second_value}</SecondValue>}
           </PasswordInfos>
           <Buttons>
-            <Favorite>
+            <Favorite
+              onPress={() => {
+                handleFavoritePassword(id);
+              }}>
               <Icon
                 name="star"
                 size={26}
@@ -79,7 +81,10 @@ const Password = ({
         </Header>
         <Bottom>
           <PasswordValue>{password_value}</PasswordValue>
-          <Delete>
+          <Delete
+            onPress={() => {
+              handleRemovePassword(id);
+            }}>
             <Icon name="trash-2" size={26} color="#898989" />
           </Delete>
         </Bottom>

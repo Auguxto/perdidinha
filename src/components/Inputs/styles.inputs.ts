@@ -2,18 +2,6 @@ import styled from 'styled-components/native';
 
 const background = '#FFFFFF';
 
-export const AddPasswordContainer = styled.View`
-  flex: 1;
-
-  background-color: ${background};
-`;
-
-export const InputsContainer = styled.View`
-  flex: 1;
-
-  margin-top: 80px;
-`;
-
 export const Input = styled.TextInput.attrs({
   placeholderTextColor: 'rgba(55, 58, 77, 0.3)',
 })`
@@ -41,6 +29,29 @@ export const SelectContainer = styled.View`
 
   flex-direction: row;
   justify-content: space-between;
+`;
+
+export const Button = styled.TouchableOpacity.attrs({
+  activeOpacity: 1,
+})`
+  width: 90%;
+  height: 60px;
+
+  align-items: center;
+  justify-content: center;
+
+  margin: 20px auto;
+
+  background-color: #be5deb;
+
+  border-radius: 60px;
+`;
+
+export const ButtonText = styled.Text`
+  font-family: 'Ubuntu';
+  font-size: 18px;
+
+  color: #ffffff;
 `;
 
 export const ColorInput = styled.TouchableOpacity.attrs({

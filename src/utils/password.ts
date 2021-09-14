@@ -8,8 +8,6 @@ export let passwords: Password[] = [
     background: '#FFFFFF',
     icon: 'google',
     categorie: 'Site',
-    created_at: Date.now(),
-    updated_at: Date.now(),
   },
   {
     id: '2',
@@ -20,8 +18,6 @@ export let passwords: Password[] = [
     background: '#FFFFFF',
     icon: 'facebook',
     categorie: 'Rede Social',
-    created_at: Date.now(),
-    updated_at: Date.now(),
   },
   {
     id: '3',
@@ -32,8 +28,6 @@ export let passwords: Password[] = [
     background: '#FFFFFF',
     icon: 'instagram',
     categorie: 'Rede Social',
-    created_at: Date.now(),
-    updated_at: Date.now(),
   },
   {
     id: '4',
@@ -44,8 +38,6 @@ export let passwords: Password[] = [
     background: '#FFFFFF',
     icon: 'tiktok',
     categorie: 'Aplicativo',
-    created_at: Date.now(),
-    updated_at: Date.now(),
   },
   {
     id: '5',
@@ -56,8 +48,6 @@ export let passwords: Password[] = [
     background: '#FFFFFF',
     icon: 'nubank',
     categorie: 'Banco',
-    created_at: Date.now(),
-    updated_at: Date.now(),
   },
   {
     id: '6',
@@ -68,7 +58,5 @@ export let passwords: Password[] = [
     background: '#FFFFFF',
     icon: 'linkedin',
     categorie: 'Site',
-    created_at: Date.now(),
-    updated_at: Date.now(),
   },
 ];

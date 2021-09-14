@@ -36,6 +36,7 @@ type IconName =
   | 'netshoes';
 
 type Categories =
+  | 'Favoritos'
   | 'Todos'
   | 'Cartão'
   | 'Site'
@@ -51,16 +52,15 @@ interface User {
 }
 
 interface Password {
-  id: string;
+  id?: string;
   name: string;
   enter_value: string;
+  second_value?: string;
   password_value: string;
   favorite: boolean;
-  icon: IconName;
+  icon: string;
   background: string;
-  categorie: Categories;
-  created_at: number;
-  updated_at: number;
+  categorie: string;
 }
 
 interface Categorie {

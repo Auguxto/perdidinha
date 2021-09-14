@@ -52,7 +52,7 @@ export const EnterValue = styled.Text.attrs({
   color: #747474;
 `;
 
-export const PasswordDate = styled.Text.attrs({
+export const SecondValue = styled.Text.attrs({
   numberOfLines: 1,
 })`
   font-family: 'Ubuntu-Medium';

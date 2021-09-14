@@ -7,7 +7,6 @@ import {LoadingContainer, LoadingText} from './styles.loading';
 import {UserContext} from '@contexts/UserContext';
 
 import {getUser} from '@utils/storage';
-
 interface ILoading {
   navigation: DrawerNavigationProp<RootDrawerNavigation, 'Loading'>;
 }

@@ -42,3 +42,47 @@ export async function removeUser() {
     console.log(err);
   }
 }
+
+export async function loadPasswords(): Promise<Password[]> {
+  try {
+    let passwords = await AsyncStorage.getItem('passwords');
+    if (!passwords) {
+      await saveToStorage('passwords', []);
+      return [];
+    }
+    return JSON.parse(passwords);
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+export async function savePassword(password: Password): Promise<Password[]> {
+  try {
+    const local_pass = await loadPasswords();
+    const new_pass = [password, ...local_pass];
+    await saveToStorage('passwords', new_pass);
+    const passwords = await loadPasswords();
+    return passwords;
+  } catch {}
+}
+
+export async function removePassword(id: string): Promise<Password[]> {
+  try {
+    const local_pass = await loadPasswords();
+    const new_pass = local_pass.filter(pass => pass.id !== id);
+    await saveToStorage('passwords', new_pass);
+    const passwords = await loadPasswords();
+    return passwords;
+  } catch {}
+}
+
+export async function favoritePassword(id: string): Promise<Password[]> {
+  try {
+    let local_pass = await loadPasswords();
+    const passwordIndex = local_pass.findIndex(password => password.id === id);
+    local_pass[passwordIndex].favorite = !local_pass[passwordIndex].favorite;
+    await saveToStorage('passwords', local_pass);
+    const passwords = await loadPasswords();
+    return passwords;
+  } catch {}
+}

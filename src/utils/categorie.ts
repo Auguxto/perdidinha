@@ -1,30 +1,34 @@
 export const categories: Categorie[] = [
   {
     id: '0',
-    name: 'Todos',
+    name: 'Favoritos',
   },
   {
     id: '1',
-    name: 'Cartão',
+    name: 'Todos',
   },
   {
     id: '2',
-    name: 'Site',
+    name: 'Cartão',
   },
   {
     id: '3',
-    name: 'Banco',
+    name: 'Site',
   },
   {
     id: '4',
-    name: 'Rede Social',
+    name: 'Banco',
   },
   {
     id: '5',
-    name: 'Aplicativo',
+    name: 'Rede Social',
   },
   {
     id: '6',
+    name: 'Aplicativo',
+  },
+  {
+    id: '7',
     name: 'Outros',
   },
 ];
@@ -49,9 +53,5 @@ export const inputCategories: Categorie[] = [
   {
     id: '4',
     name: 'Aplicativo',
-  },
-  {
-    id: '5',
-    name: 'Outros',
   },
 ];

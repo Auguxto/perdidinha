@@ -4,7 +4,7 @@ import React from 'react';
 import {Icon, PasswordIconContainer} from './styles.passwordicon';
 
 interface IPasswordIcon {
-  iconName: IconName;
+  iconName: string;
   backgroundColor: string;
 }
 
