@@ -1,6 +1,26 @@
 import styled from 'styled-components/native';
+import MaskInput from 'react-native-mask-input';
 
 const background = '#FFFFFF';
+
+export const InputMask = styled(MaskInput).attrs({
+  placeholderTextColor: 'rgba(55, 58, 77, 0.3)',
+})`
+  width: 90%;
+  height: 65px;
+
+  padding-left: 10px;
+
+  margin: 0px auto;
+  margin-bottom: 20px;
+
+  background-color: ${background};
+
+  border-radius: 10px;
+
+  font-family: 'Ubuntu';
+  font-size: 16px;
+`;
 
 export const Input = styled.TextInput.attrs({
   placeholderTextColor: 'rgba(55, 58, 77, 0.3)',

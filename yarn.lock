@@ -1207,14 +1207,6 @@
   resolved "https://registry.yarnpkg.com/@react-navigation/elements/-/elements-1.1.0.tgz#483155ccf5a8f18d015db283bed34cc2255e2e9e"
   integrity sha512-jZncciZPGuoP6B6f+Wpf6MYSSYy86B2HJDbFTCtT5xZV0w6V9GgCeqvSTOEAxifZrmKl8uDxsr0GrIxgQE8NxA==
 
-"@react-navigation/native-stack@^6.1.0":
-  version "6.1.0"
-  resolved "https://registry.yarnpkg.com/@react-navigation/native-stack/-/native-stack-6.1.0.tgz#32e50d07bc8d9669d65f72dc4ffec2a6cc9ef379"
-  integrity sha512-ta8JQ9n6e7pxrXJ9/MYH57g0xhlV8rzGvQtni6KvBdWqqk0M5QDqIXaUkzXp2wvLMZp7LQmnD4FI/TGG2mQOKA==
-  dependencies:
-    "@react-navigation/elements" "^1.1.0"
-    warn-once "^0.1.0"
-
 "@react-navigation/native@^6.0.2":
   version "6.0.2"
   resolved "https://registry.yarnpkg.com/@react-navigation/native/-/native-6.0.2.tgz#6bdb3cfafb6a9cfb603c1555dd61faafca35b7c2"
@@ -5941,13 +5933,10 @@ react-native-get-random-values@^1.7.0:
   dependencies:
     fast-base64-decode "^1.0.0"
 
-react-native-neomorph-shadows@^1.1.2:
-  version "1.1.2"
-  resolved "https://registry.yarnpkg.com/react-native-neomorph-shadows/-/react-native-neomorph-shadows-1.1.2.tgz#5af1b7024fc9286bfa55df1db1b080688dd85af4"
-  integrity sha512-HJ7bBEwuze6TNxz/+1RvaHrrHHYMEZ0itE3hPgGxvst7Jz47K9TnEDiFskjTXMaTxXOCqzPDa9UmUfQK2K15tA==
-  dependencies:
-    "@react-native-community/art" "^1.2.0"
-    prop-types "^15.7.2"
+react-native-mask-input@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/react-native-mask-input/-/react-native-mask-input-1.0.3.tgz#e490796e1af8c53074d5807b9de1d91bcff97e10"
+  integrity sha512-Ve0bllu7AJVnUr+PeJLzr5MDxtfpR3XqS/+pzH5f6C7LpPwmeFf4v0oNfSp26Q3WjReKImiWUVo1xKnc4KG0Qg==
 
 react-native-reanimated@^2.0.0:
   version "2.0.0"
@@ -5958,11 +5947,6 @@ react-native-reanimated@^2.0.0:
     fbjs "^3.0.0"
     mockdate "^3.0.2"
     string-hash-64 "^1.0.3"
-
-react-native-responsive-screen@^1.4.2:
-  version "1.4.2"
-  resolved "https://registry.yarnpkg.com/react-native-responsive-screen/-/react-native-responsive-screen-1.4.2.tgz#45280826d24f9accbfdf46a36cb8e6d780f76f28"
-  integrity sha512-BLYz0UUpeohrib7jbz6wDmtBD5OmiuMRko4IT8kIF63taXPod/c5iZgmWnr5qOnK8hMuKiGMvsM3sC+eHX/lEQ==
 
 react-native-safe-area-context@^3.3.0:
   version "3.3.0"

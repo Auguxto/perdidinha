@@ -6,7 +6,10 @@ import {DrawerNavigationProp} from '@react-navigation/drawer';
 import SelectInput from '@components/SelectInput';
 
 import * as S from '../styles.inputs';
+
 import {UserContext} from '@contexts/UserContext';
+
+import Masks from '@utils/masks';
 
 interface ICardInput {
   color: string;
@@ -44,7 +47,7 @@ const CardInput = ({
         name,
         enter_value: number,
         second_value: date,
-        password_value: password,
+        password_value: password + ' Cód: ' + code,
         background: color,
         categorie: 'Cartão',
         favorite: false,
@@ -71,17 +74,24 @@ const CardInput = ({
         onChangeText={setName}
         placeholder="Nome"
       />
-      <S.Input
+      <S.InputMask
         style={styles.shadow}
         value={number}
+        onChangeText={(masked: string) => {
+          setNumber(masked);
+        }}
+        mask={Masks.card}
         keyboardType="numeric"
-        onChangeText={setNumber}
         placeholder="Número"
       />
-      <S.Input
+      <S.InputMask
         style={styles.shadow}
         value={date}
-        onChangeText={setDate}
+        onChangeText={(masked: string) => {
+          setDate(masked);
+        }}
+        keyboardType="numeric"
+        mask={Masks.validThru}
         placeholder="00/00"
       />
       <S.Input
@@ -96,6 +106,7 @@ const CardInput = ({
         value={code}
         keyboardType="numeric"
         onChangeText={setCode}
+        maxLength={4}
         placeholder="Codigo se segurança"
       />
       <S.SelectContainer>

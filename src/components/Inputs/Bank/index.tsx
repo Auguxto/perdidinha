@@ -74,6 +74,7 @@ const BankInput = ({
         style={styles.shadow}
         value={agency}
         keyboardType="numeric"
+        maxLength={5}
         onChangeText={setAgency}
         placeholder="Agencia"
       />
@@ -82,7 +83,7 @@ const BankInput = ({
         value={account}
         keyboardType="numeric"
         onChangeText={setAccount}
-        placeholder="Conta com digito"
+        placeholder="Conta"
       />
       <S.Input
         style={styles.shadow}
