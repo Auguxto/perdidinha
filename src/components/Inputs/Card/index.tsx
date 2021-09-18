@@ -1,6 +1,5 @@
 import React, {Dispatch, SetStateAction, useContext, useState} from 'react';
 import {StyleSheet} from 'react-native';
-import {icons} from '@utils/icon';
 import {DrawerNavigationProp} from '@react-navigation/drawer';
 
 import SelectInput from '@components/SelectInput';
@@ -9,15 +8,16 @@ import * as S from '../styles.inputs';
 
 import {UserContext} from '@contexts/UserContext';
 
+import {icons} from '@utils/icon';
 import Masks from '@utils/masks';
 
 interface ICardInput {
   color: string;
+  selectedIcon: string;
+  navigation: DrawerNavigationProp<RootDrawerNavigation>;
   setSelectedIcon: Dispatch<SetStateAction<string>>;
   setColor: Dispatch<SetStateAction<string>>;
-  selectedIcon: string;
   toggleColorPicker: () => void;
-  navigation: DrawerNavigationProp<RootDrawerNavigation>;
 }
 
 const CardInput = ({

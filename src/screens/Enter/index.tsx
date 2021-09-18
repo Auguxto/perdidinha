@@ -1,5 +1,5 @@
 import React, {useState, useRef, useContext} from 'react';
-import {Animated, Dimensions} from 'react-native';
+import {Animated, useWindowDimensions} from 'react-native';
 import {DrawerNavigationProp} from '@react-navigation/drawer';
 
 import CheckBox from '@components/CheckBox';
@@ -34,9 +34,9 @@ const Enter = ({navigation}: IEnter) => {
 
   const {handleSetUser} = useContext(UserContext);
 
-  const windowHeight = Dimensions.get('window').height;
+  const {height} = useWindowDimensions();
 
-  const Animation = useRef(new Animated.Value(windowHeight)).current;
+  const Animation = useRef(new Animated.Value(height)).current;
 
   const active = () => {
     Animated.timing(Animation, {

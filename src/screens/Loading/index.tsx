@@ -1,6 +1,8 @@
 import React, {useEffect, useContext} from 'react';
 import SplashScreen from 'react-native-splash-screen';
+import {BackHandler} from 'react-native';
 import {DrawerNavigationProp} from '@react-navigation/drawer';
+import FingerprintScanner from 'react-native-fingerprint-scanner';
 
 import {LoadingContainer, LoadingText} from './styles.loading';
 
@@ -21,9 +23,20 @@ const Loading = ({navigation}: ILoading) => {
     (async () => {
       let user_storage = await getUser();
       if (user_storage) {
-        load(user_storage);
+        if (user_storage.biometry) {
+          FingerprintScanner.authenticate({
+            title: 'Perdidinha',
+          })
+            .then(() => {
+              load(user_storage);
 
-        navigation.navigate('Home');
+              navigation.navigate('Home');
+              FingerprintScanner.release();
+            })
+            .catch(() => {
+              BackHandler.exitApp();
+            });
+        }
       } else {
         navigation.navigate('Enter');
         console.log('No user found on storage');
