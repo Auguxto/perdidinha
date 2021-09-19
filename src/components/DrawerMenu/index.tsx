@@ -54,10 +54,6 @@ const DrawerMenu = ({navigation}: Props) => {
           <Icon name="user" color="#000000" size={20} />
           <S.TabText>Perfil</S.TabText>
         </S.Tab>
-        <S.Tab onPress={() => navigation.navigate('Settings')}>
-          <Icon name="settings" color="#000000" size={20} />
-          <S.TabText>Configurações</S.TabText>
-        </S.Tab>
       </S.MenuTabs>
       <S.LogoutContainer
         onPress={() => {

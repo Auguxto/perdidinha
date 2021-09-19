@@ -12,7 +12,6 @@ import Enter from '@screens/Enter';
 import Home from '@screens/Home';
 import AddPassword from '@screens/AddPassword';
 import Perfil from '@screens/Perfil';
-import Settings from '@screens/Settings';
 
 import DrawerMenu from '@components/DrawerMenu';
 
@@ -47,7 +46,6 @@ const App = () => {
           <Drawer.Screen name="Home" component={Home} />
           <Drawer.Screen name="AddPassword" component={AddPassword} />
           <Drawer.Screen name="Perfil" component={Perfil} />
-          <Drawer.Screen name="Settings" component={Settings} />
         </Drawer.Navigator>
       </UserProvider>
     </NavigationContainer>
