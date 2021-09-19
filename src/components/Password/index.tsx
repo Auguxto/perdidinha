@@ -1,6 +1,8 @@
-import React, {ComponentProps, useContext, useReducer, useState} from 'react';
-import {View, StyleSheet} from 'react-native';
+import React, {useContext, useReducer} from 'react';
+import {StyleSheet} from 'react-native';
 import Icon from 'react-native-vector-icons/Feather';
+
+import useHeightLayout from '@hooks/useHeightLayout';
 
 import {
   PasswordContainer,
@@ -21,17 +23,6 @@ import {
 import PasswordIcon from '@components/PasswordIcon';
 import {UserContext} from '@contexts/UserContext';
 
-const useLayout = () => {
-  const [layout, setLayout] = useState({
-    height: 0,
-  });
-  const onLayout: ComponentProps<typeof View>['onLayout'] = ({nativeEvent}) => {
-    setLayout(nativeEvent.layout);
-  };
-
-  return [layout, onLayout] as const;
-};
-
 const Password = ({
   id,
   name,
@@ -42,7 +33,7 @@ const Password = ({
   favorite,
   second_value,
 }: Password) => {
-  const [{height}, onLayout] = useLayout();
+  const [{height}, onLayout] = useHeightLayout(10);
 
   const [viewPassword, toggleViewPassword] = useReducer(s => !s, false);
 

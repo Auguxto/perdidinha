@@ -1,6 +1,8 @@
-import React, {useReducer, useState, ComponentProps} from 'react';
-import {View, StyleSheet} from 'react-native';
+import React, {useReducer} from 'react';
+import {StyleSheet} from 'react-native';
 import Icon from 'react-native-vector-icons/Feather';
+
+import useHeightLayout from '@hooks/useHeightLayout';
 
 import {
   AnimatedContainer,
@@ -20,19 +22,8 @@ interface ISelectInput {
   width?: string;
 }
 
-const useLayout = () => {
-  const [layout, setLayout] = useState({
-    height: 65,
-  });
-  const onLayout: ComponentProps<typeof View>['onLayout'] = ({nativeEvent}) => {
-    setLayout(nativeEvent.layout);
-  };
-
-  return [layout, onLayout] as const;
-};
-
 const SelectInput = ({data, selected, onSelect, width}: ISelectInput) => {
-  const [{height}, onLayout] = useLayout();
+  const [{height}, onLayout] = useHeightLayout(65);
 
   const [open, toggleOpen] = useReducer(s => !s, false);
 
