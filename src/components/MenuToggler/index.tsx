@@ -1,7 +1,7 @@
 import React from 'react';
 import Icon from 'react-native-vector-icons/Feather';
 
-import {MenuTogglerButton} from './styles.menutoggler';
+import * as S from './styles.menutoggler';
 
 interface IMenuToggler {
   onPress: () => void;
@@ -9,9 +9,9 @@ interface IMenuToggler {
 
 const MenuToggler = ({onPress}: IMenuToggler) => {
   return (
-    <MenuTogglerButton onPress={onPress}>
+    <S.MenuTogglerButton onPress={onPress}>
       <Icon name="menu" color="#FFFFFF" size={40} />
-    </MenuTogglerButton>
+    </S.MenuTogglerButton>
   );
 };
 

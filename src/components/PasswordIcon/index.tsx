@@ -2,7 +2,7 @@ import React from 'react';
 
 import getIcon from '@lib/icons';
 
-import {Icon, PasswordIconContainer} from './styles.passwordicon';
+import * as S from './styles.passwordicon';
 
 interface IPasswordIcon {
   iconName: string;
@@ -11,9 +11,9 @@ interface IPasswordIcon {
 
 const PasswordIcon = ({iconName, backgroundColor}: IPasswordIcon) => {
   return (
-    <PasswordIconContainer backgroundColor={backgroundColor}>
-      <Icon source={getIcon(iconName)} />
-    </PasswordIconContainer>
+    <S.PasswordIconContainer backgroundColor={backgroundColor}>
+      <S.Icon source={getIcon(iconName)} />
+    </S.PasswordIconContainer>
   );
 };
 

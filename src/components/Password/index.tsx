@@ -4,21 +4,7 @@ import Icon from 'react-native-vector-icons/Feather';
 
 import useHeightLayout from '@hooks/useHeightLayout';
 
-import {
-  PasswordContainer,
-  AnimatedContainer,
-  Header,
-  PasswordInfos,
-  Name,
-  EnterValue,
-  SecondValue,
-  Buttons,
-  Favorite,
-  ToggleView,
-  Bottom,
-  PasswordValue,
-  Delete,
-} from './styles.password';
+import * as S from './styles.password';
 
 import PasswordIcon from '@components/PasswordIcon';
 import {UserContext} from '@contexts/UserContext';
@@ -41,17 +27,17 @@ const Password = ({
     useContext(UserContext);
 
   return (
-    <PasswordContainer style={styles.shadow} animate={{height}}>
-      <AnimatedContainer onLayout={onLayout} open={viewPassword}>
-        <Header>
+    <S.PasswordContainer style={styles.shadow} animate={{height}}>
+      <S.AnimatedContainer onLayout={onLayout} open={viewPassword}>
+        <S.Header>
           <PasswordIcon iconName={icon} backgroundColor={background} />
-          <PasswordInfos>
-            <Name>{name}</Name>
-            <EnterValue>{enter_value}</EnterValue>
-            {second_value && <SecondValue>{second_value}</SecondValue>}
-          </PasswordInfos>
-          <Buttons>
-            <Favorite
+          <S.PasswordInfos>
+            <S.Name>{name}</S.Name>
+            <S.EnterValue>{enter_value}</S.EnterValue>
+            {second_value && <S.SecondValue>{second_value}</S.SecondValue>}
+          </S.PasswordInfos>
+          <S.Buttons>
+            <S.Favorite
               onPress={() => {
                 handleFavoritePassword(id);
               }}>
@@ -60,27 +46,27 @@ const Password = ({
                 size={26}
                 color={favorite ? '#F8EA75' : '#898989'}
               />
-            </Favorite>
-            <ToggleView onPress={toggleViewPassword}>
+            </S.Favorite>
+            <S.ToggleView onPress={toggleViewPassword}>
               <Icon
                 name={viewPassword ? 'chevron-up' : 'chevron-down'}
                 size={26}
                 color="#898989"
               />
-            </ToggleView>
-          </Buttons>
-        </Header>
-        <Bottom>
-          <PasswordValue>{password_value}</PasswordValue>
-          <Delete
+            </S.ToggleView>
+          </S.Buttons>
+        </S.Header>
+        <S.Bottom>
+          <S.PasswordValue>{password_value}</S.PasswordValue>
+          <S.Delete
             onPress={() => {
               handleRemovePassword(id);
             }}>
             <Icon name="trash-2" size={26} color="#898989" />
-          </Delete>
-        </Bottom>
-      </AnimatedContainer>
-    </PasswordContainer>
+          </S.Delete>
+        </S.Bottom>
+      </S.AnimatedContainer>
+    </S.PasswordContainer>
   );
 };
 

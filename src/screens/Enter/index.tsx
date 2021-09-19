@@ -6,22 +6,7 @@ import CheckBox from '@components/CheckBox';
 
 import {UserContext} from '@contexts/UserContext';
 
-import {
-  ButtonText,
-  EnterContainer,
-  IntroButton,
-  Introduction,
-  IntroductionDesc,
-  IntroductionTitle,
-  LogoImage,
-  Modal,
-  ModalButton,
-  ModalCheckBox,
-  ModalCheckBoxText,
-  ModalInput,
-  ModalButtonContainer,
-  ModalTitle,
-} from './styled.enter';
+import * as S from './styled.enter';
 
 interface IEnter {
   navigation: DrawerNavigationProp<RootDrawerNavigation, 'Enter'>;
@@ -54,13 +39,13 @@ const Enter = ({navigation}: IEnter) => {
   }
 
   return (
-    <EnterContainer behavior="height">
-      <LogoImage />
+    <S.EnterContainer behavior="height">
+      <S.LogoImage />
       {modalActive ? (
-        <Modal style={{transform: [{translateY: Animation}]}}>
-          <ModalTitle>Bem vinda</ModalTitle>
-          <ModalInput value={name} onChangeText={text => setName(text)} />
-          <ModalCheckBox>
+        <S.Modal style={{transform: [{translateY: Animation}]}}>
+          <S.ModalTitle>Bem vinda</S.ModalTitle>
+          <S.ModalInput value={name} onChangeText={text => setName(text)} />
+          <S.ModalCheckBox>
             <CheckBox
               onPress={() => setChecked(!checked)}
               checked={checked}
@@ -68,36 +53,36 @@ const Enter = ({navigation}: IEnter) => {
               height={30}
               color="#BE5DEB"
             />
-            <ModalCheckBoxText>usar biometria?</ModalCheckBoxText>
-          </ModalCheckBox>
-          <ModalButtonContainer>
-            <ModalButton
+            <S.ModalCheckBoxText>usar biometria?</S.ModalCheckBoxText>
+          </S.ModalCheckBox>
+          <S.ModalButtonContainer>
+            <S.ModalButton
               onPress={() => {
                 handleLogin();
               }}
               backgroundColor="#BE5DEB">
-              <ButtonText textColor="#FFFFFF">Entrar</ButtonText>
-            </ModalButton>
-          </ModalButtonContainer>
-        </Modal>
+              <S.ButtonText textColor="#FFFFFF">Entrar</S.ButtonText>
+            </S.ModalButton>
+          </S.ModalButtonContainer>
+        </S.Modal>
       ) : (
-        <Introduction>
-          <IntroductionTitle>Perdidinha?</IntroductionTitle>
-          <IntroductionDesc>
+        <S.Introduction>
+          <S.IntroductionTitle>Perdidinha?</S.IntroductionTitle>
+          <S.IntroductionDesc>
             Minha namorada é muito perdida então decidi fazer esse Aplicativo
             para que ela possa guardar suas senhas ❤️
-          </IntroductionDesc>
-          <IntroButton
+          </S.IntroductionDesc>
+          <S.IntroButton
             onPress={() => {
               setModalActive(true);
               active();
             }}
             backgroundColor="#FFFFFF">
-            <ButtonText textColor="#BE5DEB">Entrar</ButtonText>
-          </IntroButton>
-        </Introduction>
+            <S.ButtonText textColor="#BE5DEB">Entrar</S.ButtonText>
+          </S.IntroButton>
+        </S.Introduction>
       )}
-    </EnterContainer>
+    </S.EnterContainer>
   );
 };
 

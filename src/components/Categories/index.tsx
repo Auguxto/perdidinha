@@ -3,13 +3,7 @@ import {StyleSheet} from 'react-native';
 
 import {categories} from '@utils/categorie';
 
-import {
-  Button,
-  ButtonText,
-  CategoriesButtons,
-  CategoriesContainer,
-  Title,
-} from './styled.categories';
+import * as S from './styled.categories';
 
 interface ICategories {
   categorie: string;
@@ -18,22 +12,22 @@ interface ICategories {
 
 const Categories = ({setCategorie}: ICategories) => {
   const renderItem = ({item}) => (
-    <Button onPress={() => setCategorie(item.name)} style={styles.shadow}>
-      <ButtonText>{item.name}</ButtonText>
-    </Button>
+    <S.Button onPress={() => setCategorie(item.name)} style={styles.shadow}>
+      <S.ButtonText>{item.name}</S.ButtonText>
+    </S.Button>
   );
 
   return (
-    <CategoriesContainer>
-      <Title>Categorias</Title>
-      <CategoriesButtons
+    <S.CategoriesContainer>
+      <S.Title>Categorias</S.Title>
+      <S.CategoriesButtons
         showsHorizontalScrollIndicator={false}
         horizontal
         data={categories}
         renderItem={renderItem}
         keyExtractor={item => item.id}
       />
-    </CategoriesContainer>
+    </S.CategoriesContainer>
   );
 };
 

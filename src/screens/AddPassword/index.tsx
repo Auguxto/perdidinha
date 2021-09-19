@@ -1,6 +1,6 @@
 import React, {useReducer, useState} from 'react';
 
-import {AddPasswordContainer, InputsContainer} from './styles.addpassword';
+import * as S from './styles.addpassword';
 
 import {inputCategories} from '@utils/categorie';
 
@@ -28,9 +28,9 @@ const AddPassword = ({navigation}) => {
           onChangeColor={setColor}
         />
       )}
-      <AddPasswordContainer>
+      <S.AddPasswordContainer>
         <Header navigation={navigation} />
-        <InputsContainer>
+        <S.InputsContainer>
           <SelectInput
             onSelect={setSelected}
             data={inputCategories}
@@ -96,8 +96,8 @@ const AddPassword = ({navigation}) => {
               toggleColorPicker={toggleColorPicker}
             />
           )}
-        </InputsContainer>
-      </AddPasswordContainer>
+        </S.InputsContainer>
+      </S.AddPasswordContainer>
     </>
   );
 };

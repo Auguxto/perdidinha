@@ -3,7 +3,7 @@ import {DrawerNavigationProp} from '@react-navigation/drawer';
 import {format} from 'date-fns';
 import ptBR from 'date-fns/locale/pt-BR';
 
-import {Today, HeaderContainer, HelloUser, Toggler} from './styles.header';
+import * as S from './styles.header';
 
 import {UserContext} from '@contexts/UserContext';
 
@@ -19,11 +19,11 @@ const Header = ({navigation}: IHeader) => {
   });
 
   return (
-    <HeaderContainer>
-      <Toggler onPress={() => navigation.toggleDrawer()} />
-      <HelloUser>Olá, {user ? user.name : ' '}</HelloUser>
-      <Today>{date}</Today>
-    </HeaderContainer>
+    <S.HeaderContainer>
+      <S.Toggler onPress={() => navigation.toggleDrawer()} />
+      <S.HelloUser>Olá, {user ? user.name : ' '}</S.HelloUser>
+      <S.Today>{date}</S.Today>
+    </S.HeaderContainer>
   );
 };
 

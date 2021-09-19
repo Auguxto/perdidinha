@@ -4,15 +4,7 @@ import Icon from 'react-native-vector-icons/Feather';
 
 import {randomColor} from '@lib/colors';
 
-import {
-  CloseColorPicker,
-  ColorPickerContainer,
-  ColorPickerWrapper,
-  ColorPreview,
-  InputColor,
-  RandomButton,
-  RandomText,
-} from './styles.colorpicker';
+import * as S from './styles.colorpicker';
 
 interface IColorPicker {
   color: string;
@@ -39,23 +31,25 @@ const ColorPicker = ({
   }
 
   return (
-    <ColorPickerContainer>
-      <ColorPickerWrapper>
-        <CloseColorPicker onPress={onCloseButton}>
+    <S.ColorPickerContainer>
+      <S.ColorPickerWrapper>
+        <S.CloseColorPicker onPress={onCloseButton}>
           <Icon name="x" size={30} color="#A6A6A6" />
-        </CloseColorPicker>
-        <ColorPreview style={styles.shadow} color={color} />
-        <InputColor
+        </S.CloseColorPicker>
+        <S.ColorPreview style={styles.shadow} color={color} />
+        <S.InputColor
           style={styles.shadow}
           value={inputColor}
           onChangeText={text => onInputColorChange(text)}
           autoCapitalize="none"
         />
-        <RandomButton style={styles.shadow} onPress={() => handleRandomColor()}>
-          <RandomText>Cor Aleatória</RandomText>
-        </RandomButton>
-      </ColorPickerWrapper>
-    </ColorPickerContainer>
+        <S.RandomButton
+          style={styles.shadow}
+          onPress={() => handleRandomColor()}>
+          <S.RandomText>Cor Aleatória</S.RandomText>
+        </S.RandomButton>
+      </S.ColorPickerWrapper>
+    </S.ColorPickerContainer>
   );
 };
 

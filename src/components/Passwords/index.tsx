@@ -1,6 +1,6 @@
 import React, {useContext} from 'react';
 
-import {PasswordsContainer, PasswordList} from './styles.passwords';
+import * as S from './styles.passwords';
 
 import Password from '@components/Password';
 
@@ -25,14 +25,14 @@ const Passwords = ({categorie}: IPasswords) => {
       : passwords.filter(password => password.categorie === categorie);
 
   return (
-    <PasswordsContainer>
-      <PasswordList
+    <S.PasswordsContainer>
+      <S.PasswordList
         showsVerticalScrollIndicator={false}
         data={selected}
         renderItem={renderItem}
         keyExtractor={item => item.id}
       />
-    </PasswordsContainer>
+    </S.PasswordsContainer>
   );
 };
 

@@ -4,16 +4,7 @@ import Icon from 'react-native-vector-icons/Feather';
 
 import useHeightLayout from '@hooks/useHeightLayout';
 
-import {
-  AnimatedContainer,
-  Bottom,
-  Header,
-  SelectInputContainer,
-  SelectItem,
-  SelectItemName,
-  SelectName,
-  ToggleSelectOpen,
-} from './styles.selectinput';
+import * as S from './styles.selectinput';
 
 interface ISelectInput {
   data: any[];
@@ -29,18 +20,18 @@ const SelectInput = ({data, selected, onSelect, width}: ISelectInput) => {
 
   const renderItem = ({item}) => {
     return (
-      <SelectItem
+      <S.SelectItem
         onPress={() => {
           onSelect(item.name);
           toggleOpen();
         }}>
-        <SelectItemName>{item.name}</SelectItemName>
-      </SelectItem>
+        <S.SelectItemName>{item.name}</S.SelectItemName>
+      </S.SelectItem>
     );
   };
 
   return (
-    <SelectInputContainer
+    <S.SelectInputContainer
       width={width}
       style={styles.shadow}
       animate={{height}}
@@ -48,25 +39,25 @@ const SelectInput = ({data, selected, onSelect, width}: ISelectInput) => {
         type: 'timing',
         duration: 350,
       }}>
-      <AnimatedContainer onLayout={onLayout} open={open}>
-        <Header>
-          <SelectName>{selected}</SelectName>
-          <ToggleSelectOpen onPress={toggleOpen}>
+      <S.AnimatedContainer onLayout={onLayout} open={open}>
+        <S.Header>
+          <S.SelectName>{selected}</S.SelectName>
+          <S.ToggleSelectOpen onPress={toggleOpen}>
             <Icon
               name={open ? 'chevron-up' : 'chevron-down'}
               size={26}
               color="#be5deb"
             />
-          </ToggleSelectOpen>
-        </Header>
-        <Bottom
+          </S.ToggleSelectOpen>
+        </S.Header>
+        <S.Bottom
           showsVerticalScrollIndicator={false}
           data={data}
           renderItem={renderItem}
           keyExtractor={item => item.id}
         />
-      </AnimatedContainer>
-    </SelectInputContainer>
+      </S.AnimatedContainer>
+    </S.SelectInputContainer>
   );
 };
 

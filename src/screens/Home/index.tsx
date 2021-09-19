@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import Icon from 'react-native-vector-icons/Feather';
 import {StyleSheet} from 'react-native';
 
-import {AddButton, HomeContainer} from './styles.home';
+import * as S from './styles.home';
 
 import Header from '@components/Header';
 import Categories from '@components/Categories';
@@ -12,16 +12,16 @@ const Home = ({navigation}) => {
   const [categorie, setCategorie] = useState<Categories>('Todos');
 
   return (
-    <HomeContainer>
+    <S.HomeContainer>
       <Header navigation={navigation} />
       <Categories categorie={categorie} setCategorie={setCategorie} />
       <Passwords categorie={categorie} />
-      <AddButton
+      <S.AddButton
         onPress={() => navigation.navigate('AddPassword')}
         style={styles.shadow}>
         <Icon name="plus" size={25} color="#FFFFFF" />
-      </AddButton>
-    </HomeContainer>
+      </S.AddButton>
+    </S.HomeContainer>
   );
 };
 

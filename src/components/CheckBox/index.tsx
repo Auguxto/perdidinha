@@ -1,7 +1,7 @@
 import React from 'react';
 import Icon from 'react-native-vector-icons/Feather';
 
-import {CheckBoxContainer} from './styles.checkbox';
+import * as S from './styles.checkbox';
 
 interface ICheckBox {
   checked: boolean;
@@ -13,14 +13,14 @@ interface ICheckBox {
 
 const CheckBox = ({checked, width, height, color, onPress}: ICheckBox) => {
   return (
-    <CheckBoxContainer
+    <S.CheckBoxContainer
       onPress={onPress}
       checked={checked}
       color={color}
       width={width}
       height={height}>
       {checked && <Icon name="check" color="#FFFFFF" size={width} />}
-    </CheckBoxContainer>
+    </S.CheckBoxContainer>
   );
 };
 
