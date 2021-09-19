@@ -6,9 +6,9 @@ import {
   DrawerNavigationHelpers,
 } from '@react-navigation/drawer/lib/typescript/src/types';
 
-import {UserContext} from '@contexts/UserContext';
-
 import * as S from './styles.drawer';
+
+import {UserContext} from '@contexts/UserContext';
 
 interface Props {
   state: DrawerNavigationState<ParamListBase>;

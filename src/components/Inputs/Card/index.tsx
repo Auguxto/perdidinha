@@ -2,13 +2,14 @@ import React, {Dispatch, SetStateAction, useContext, useState} from 'react';
 import {StyleSheet} from 'react-native';
 import {DrawerNavigationProp} from '@react-navigation/drawer';
 
-import SelectInput from '@components/SelectInput';
-
 import * as S from '../styles.inputs';
+
+import SelectInput from '@components/SelectInput';
 
 import {UserContext} from '@contexts/UserContext';
 
 import {icons} from '@lib/icons';
+
 import Masks from '@utils/masks';
 
 interface ICardInput {

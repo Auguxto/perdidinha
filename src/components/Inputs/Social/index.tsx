@@ -2,9 +2,13 @@ import React, {Dispatch, SetStateAction, useContext, useState} from 'react';
 import {StyleSheet} from 'react-native';
 import {DrawerNavigationProp} from '@react-navigation/drawer';
 
-import {icons} from '@lib/icons';
+import * as S from '../styles.inputs';
 
 import SelectInput from '@components/SelectInput';
+
+import {UserContext} from '@contexts/UserContext';
+
+import {icons} from '@lib/icons';
 
 interface ISocialInput {
   color: string;
@@ -14,9 +18,6 @@ interface ISocialInput {
   setColor: Dispatch<SetStateAction<string>>;
   toggleColorPicker: () => void;
 }
-
-import * as S from '../styles.inputs';
-import {UserContext} from '@contexts/UserContext';
 
 const SocialInput = ({
   color,

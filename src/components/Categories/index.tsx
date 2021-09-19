@@ -1,9 +1,9 @@
 import React from 'react';
 import {StyleSheet} from 'react-native';
 
-import {categories} from '@utils/categorie';
-
 import * as S from './styled.categories';
+
+import {categories} from '@utils/categorie';
 
 interface ICategories {
   categorie: string;

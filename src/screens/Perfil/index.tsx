@@ -2,13 +2,13 @@ import React, {useContext} from 'react';
 import {StyleSheet} from 'react-native';
 import ImagePicker from 'react-native-image-crop-picker';
 
+import * as S from './styles.perfil';
+
 import {saveAvatar} from '@lib/storage';
 
 import Header from '@components/Header';
 
 import {UserContext} from '@contexts/UserContext';
-
-import * as S from './styles.perfil';
 
 const Perfil = ({navigation}) => {
   const {user, load} = useContext(UserContext);

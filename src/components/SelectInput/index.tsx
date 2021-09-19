@@ -2,9 +2,9 @@ import React, {useReducer} from 'react';
 import {StyleSheet} from 'react-native';
 import Icon from 'react-native-vector-icons/Feather';
 
-import useHeightLayout from '@hooks/useHeightLayout';
-
 import * as S from './styles.selectinput';
+
+import useHeightLayout from '@hooks/useHeightLayout';
 
 interface ISelectInput {
   data: any[];

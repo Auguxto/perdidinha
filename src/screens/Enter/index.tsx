@@ -2,11 +2,11 @@ import React, {useState, useRef, useContext} from 'react';
 import {Animated, useWindowDimensions} from 'react-native';
 import {DrawerNavigationProp} from '@react-navigation/drawer';
 
+import * as S from './styled.enter';
+
 import CheckBox from '@components/CheckBox';
 
 import {UserContext} from '@contexts/UserContext';
-
-import * as S from './styled.enter';
 
 interface IEnter {
   navigation: DrawerNavigationProp<RootDrawerNavigation, 'Enter'>;

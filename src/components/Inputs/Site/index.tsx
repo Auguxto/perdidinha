@@ -2,6 +2,8 @@ import React, {Dispatch, SetStateAction, useContext, useState} from 'react';
 import {StyleSheet} from 'react-native';
 import {DrawerNavigationProp} from '@react-navigation/drawer';
 
+import * as S from '../styles.inputs';
+
 import {icons} from '@lib/icons';
 
 import SelectInput from '@components/SelectInput';
@@ -14,8 +16,6 @@ interface ISiteInput {
   setColor: Dispatch<SetStateAction<string>>;
   toggleColorPicker: () => void;
 }
-
-import * as S from '../styles.inputs';
 
 import {UserContext} from '@contexts/UserContext';
 
