@@ -1,7 +1,8 @@
 import React, {Dispatch, SetStateAction, useContext, useState} from 'react';
 import {StyleSheet} from 'react-native';
-import {icons} from '@utils/icon';
 import {DrawerNavigationProp} from '@react-navigation/drawer';
+
+import {icons} from '@lib/icons';
 
 import SelectInput from '@components/SelectInput';
 

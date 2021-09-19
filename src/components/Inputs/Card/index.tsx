@@ -8,7 +8,7 @@ import * as S from '../styles.inputs';
 
 import {UserContext} from '@contexts/UserContext';
 
-import {icons} from '@utils/icon';
+import {icons} from '@lib/icons';
 import Masks from '@utils/masks';
 
 interface ICardInput {

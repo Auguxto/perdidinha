@@ -1,5 +1,6 @@
-import getIcon from '@utils/icon';
 import React from 'react';
+
+import getIcon from '@lib/icons';
 
 import {Icon, PasswordIconContainer} from './styles.passwordicon';
 
