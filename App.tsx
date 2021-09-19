@@ -1,7 +1,7 @@
 import 'react-native-gesture-handler';
 import 'react-native-get-random-values';
 import React from 'react';
-import {Dimensions} from 'react-native';
+import {useWindowDimensions} from 'react-native';
 import {createDrawerNavigator} from '@react-navigation/drawer';
 import {NavigationContainer} from '@react-navigation/native';
 
@@ -11,14 +11,14 @@ import Loading from '@screens/Loading';
 import Enter from '@screens/Enter';
 import Home from '@screens/Home';
 import AddPassword from '@screens/AddPassword';
+import Perfil from '@screens/Perfil';
 
 import DrawerMenu from '@components/DrawerMenu';
 
 const Drawer = createDrawerNavigator();
 
 const App = () => {
-  const windowWidth = Dimensions.get('window').width;
-  const windowHeight = Dimensions.get('window').height;
+  const {width: windowWidth, height: windowHeight} = useWindowDimensions();
 
   return (
     <NavigationContainer>
@@ -45,6 +45,7 @@ const App = () => {
           <Drawer.Screen name="Enter" component={Enter} />
           <Drawer.Screen name="Home" component={Home} />
           <Drawer.Screen name="AddPassword" component={AddPassword} />
+          <Drawer.Screen name="Perfil" component={Perfil} />
         </Drawer.Navigator>
       </UserProvider>
     </NavigationContainer>

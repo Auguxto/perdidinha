@@ -8,7 +8,7 @@ import {
   removeUser,
   savePassword,
   saveUser,
-} from '@utils/storage';
+} from '@lib/storage';
 
 interface IUserContext {
   user: User;

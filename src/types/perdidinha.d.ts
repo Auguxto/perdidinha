@@ -49,6 +49,7 @@ interface User {
   id: string;
   name: string;
   biometry: boolean;
+  avatar?: string;
 }
 
 interface Password {

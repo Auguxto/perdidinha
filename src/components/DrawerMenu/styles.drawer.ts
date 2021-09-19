@@ -32,6 +32,13 @@ export const AccountAvatar = styled(Avatar)`
   height: 60px;
 `;
 
+export const AccountAvatarImage = styled.Image`
+  width: 60px;
+  height: 60px;
+
+  border-radius: 60px;
+`;
+
 export const AccountTexts = styled.View`
   flex-direction: column;
 
@@ -55,8 +62,6 @@ export const AccountName = styled.Text`
 export const MenuToggler = styled.TouchableOpacity.attrs({
   activeOpacity: 1,
 })``;
-
-// ===========================================================
 
 export const MenuTabs = styled.View`
   flex-direction: column;

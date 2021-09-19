@@ -26,6 +26,16 @@ export async function saveUser(user: User) {
   }
 }
 
+export async function saveAvatar(uri: string) {
+  try {
+    let user = await getUser();
+    if (user) {
+      user.avatar = uri;
+      saveUser(user);
+    }
+  } catch {}
+}
+
 export async function getUser(): Promise<User> {
   try {
     let user = await AsyncStorage.getItem('user');

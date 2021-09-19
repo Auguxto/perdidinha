@@ -4,11 +4,12 @@ import {BackHandler} from 'react-native';
 import {DrawerNavigationProp} from '@react-navigation/drawer';
 import FingerprintScanner from 'react-native-fingerprint-scanner';
 
-import {LoadingContainer, LoadingText} from './styles.loading';
+import * as S from './styles.loading';
 
 import {UserContext} from '@contexts/UserContext';
 
-import {getUser} from '@utils/storage';
+import {getUser} from '@lib/storage';
+
 interface ILoading {
   navigation: DrawerNavigationProp<RootDrawerNavigation, 'Loading'>;
 }
@@ -16,7 +17,6 @@ interface ILoading {
 const Loading = ({navigation}: ILoading) => {
   const {load} = useContext(UserContext);
 
-  // hide splashScreen
   useEffect(() => {
     SplashScreen.hide();
 
@@ -36,19 +36,21 @@ const Loading = ({navigation}: ILoading) => {
             .catch(() => {
               BackHandler.exitApp();
             });
+        } else {
+          navigation.navigate('Home');
+          FingerprintScanner.release();
         }
       } else {
         navigation.navigate('Enter');
-        console.log('No user found on storage');
       }
     })();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
-    <LoadingContainer>
-      <LoadingText>Carregando ...</LoadingText>
-    </LoadingContainer>
+    <S.LoadingContainer>
+      <S.LoadingText>Carregando ...</S.LoadingText>
+    </S.LoadingContainer>
   );
 };
 

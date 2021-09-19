@@ -8,21 +8,7 @@ import {
 
 import {UserContext} from '@contexts/UserContext';
 
-import {
-  HeaderContainer,
-  AccountAvatar,
-  AccountName,
-  AccountTexts,
-  AccountWelcome,
-  MenuToggler,
-  AccountContainer,
-  DrawerContainer,
-  MenuTabs,
-  Tab,
-  TabText,
-  LogoutContainer,
-  LogoutText,
-} from './styles.drawer';
+import * as S from './styles.drawer';
 
 interface Props {
   state: DrawerNavigationState<ParamListBase>;
@@ -34,46 +20,54 @@ const DrawerMenu = ({navigation}: Props) => {
   const {user, handleRemoveUser} = useContext(UserContext);
 
   return (
-    <DrawerContainer>
-      <HeaderContainer>
-        <AccountContainer>
-          <AccountAvatar />
-          <AccountTexts>
-            <AccountWelcome>Bem vinda</AccountWelcome>
-            <AccountName>{user ? user.name : ''}</AccountName>
-          </AccountTexts>
-        </AccountContainer>
-        <MenuToggler onPress={() => navigation.toggleDrawer()}>
+    <S.DrawerContainer>
+      <S.HeaderContainer>
+        <S.AccountContainer>
+          {user ? (
+            user.avatar ? (
+              <S.AccountAvatarImage source={{uri: user.avatar}} />
+            ) : (
+              <S.AccountAvatar />
+            )
+          ) : (
+            <S.AccountAvatar />
+          )}
+          <S.AccountTexts>
+            <S.AccountWelcome>Bem vinda</S.AccountWelcome>
+            <S.AccountName>{user ? user.name : ''}</S.AccountName>
+          </S.AccountTexts>
+        </S.AccountContainer>
+        <S.MenuToggler onPress={() => navigation.toggleDrawer()}>
           <Icon size={30} color="#BE5DEB" name="x" />
-        </MenuToggler>
-      </HeaderContainer>
-      <MenuTabs>
-        <Tab onPress={() => navigation.navigate('Home')}>
+        </S.MenuToggler>
+      </S.HeaderContainer>
+      <S.MenuTabs>
+        <S.Tab onPress={() => navigation.navigate('Home')}>
           <Icon name="key" color="#000000" size={20} />
-          <TabText>Senhas</TabText>
-        </Tab>
-        <Tab onPress={() => navigation.navigate('AddPassword')}>
+          <S.TabText>Senhas</S.TabText>
+        </S.Tab>
+        <S.Tab onPress={() => navigation.navigate('AddPassword')}>
           <Icon name="plus" color="#000000" size={20} />
-          <TabText>Adicionar senha</TabText>
-        </Tab>
-        <Tab>
+          <S.TabText>Adicionar senha</S.TabText>
+        </S.Tab>
+        <S.Tab onPress={() => navigation.navigate('Perfil')}>
           <Icon name="user" color="#000000" size={20} />
-          <TabText>Perfil</TabText>
-        </Tab>
-        <Tab>
+          <S.TabText>Perfil</S.TabText>
+        </S.Tab>
+        <S.Tab>
           <Icon name="settings" color="#000000" size={20} />
-          <TabText>Configurações</TabText>
-        </Tab>
-      </MenuTabs>
-      <LogoutContainer
+          <S.TabText>Configurações</S.TabText>
+        </S.Tab>
+      </S.MenuTabs>
+      <S.LogoutContainer
         onPress={() => {
           handleRemoveUser();
           navigation.navigate('Enter');
         }}>
         <Icon name="log-out" size={30} color="#000000" />
-        <LogoutText>Sair</LogoutText>
-      </LogoutContainer>
-    </DrawerContainer>
+        <S.LogoutText>Sair</S.LogoutText>
+      </S.LogoutContainer>
+    </S.DrawerContainer>
   );
 };
 
