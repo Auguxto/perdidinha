@@ -31,7 +31,27 @@ export async function saveAvatar(uri: string) {
     let user = await getUser();
     if (user) {
       user.avatar = uri;
-      saveUser(user);
+      await saveUser(user);
+    }
+  } catch {}
+}
+
+export async function saveName(name: string) {
+  try {
+    let user = await getUser();
+    if (user) {
+      user.name = name;
+      await saveUser(user);
+    }
+  } catch {}
+}
+
+export async function saveBiometry(biometry: boolean) {
+  try {
+    let user = await getUser();
+    if (user) {
+      user.biometry = biometry;
+      await saveUser(user);
     }
   } catch {}
 }

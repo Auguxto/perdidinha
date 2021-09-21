@@ -1,8 +1,6 @@
 import React, {useEffect, useContext} from 'react';
-import SplashScreen from 'react-native-splash-screen';
-import {BackHandler} from 'react-native';
 import {DrawerNavigationProp} from '@react-navigation/drawer';
-import FingerprintScanner from 'react-native-fingerprint-scanner';
+import {authenticate, hideSplashScreen} from '@lib/perdidinha';
 
 import * as S from './styles.loading';
 
@@ -18,27 +16,15 @@ const Loading = ({navigation}: ILoading) => {
   const {load} = useContext(UserContext);
 
   useEffect(() => {
-    SplashScreen.hide();
+    hideSplashScreen();
 
     (async () => {
-      let user_storage = await getUser();
-      if (user_storage) {
-        if (user_storage.biometry) {
-          FingerprintScanner.authenticate({
-            title: 'Perdidinha',
-          })
-            .then(() => {
-              load(user_storage);
-
-              navigation.navigate('Home');
-              FingerprintScanner.release();
-            })
-            .catch(() => {
-              BackHandler.exitApp();
-            });
-        } else {
+      let user = await getUser();
+      if (user) {
+        const auth = await authenticate(user);
+        if (auth) {
+          load(user);
           navigation.navigate('Home');
-          FingerprintScanner.release();
         }
       } else {
         navigation.navigate('Enter');

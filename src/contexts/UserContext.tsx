@@ -35,6 +35,7 @@ const UserProvider = ({children}: IUserProvider) => {
     const id = uuid();
     setUser({name: name_value, biometry: biometry_value, id});
     await saveUser({name: name_value, biometry: biometry_value, id});
+    console.log(user);
   }
 
   async function load(local_user: User) {
