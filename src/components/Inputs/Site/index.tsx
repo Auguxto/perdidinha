@@ -1,6 +1,13 @@
-import React, {Dispatch, SetStateAction, useContext, useState} from 'react';
+import React, {
+  Dispatch,
+  SetStateAction,
+  useContext,
+  useState,
+  useReducer,
+} from 'react';
 import {StyleSheet} from 'react-native';
 import {DrawerNavigationProp} from '@react-navigation/drawer';
+import Feather from 'react-native-vector-icons/Feather';
 
 import * as S from '../styles.inputs';
 
@@ -31,6 +38,8 @@ const SiteInput = ({
   const [url, setUrl] = useState('');
   const [enter, setEnter] = useState('');
   const [password, setPassword] = useState('');
+
+  const [viewPassword, toggleViewPassword] = useReducer(s => !s, true);
 
   const {handleAddPassword} = useContext(UserContext);
 
@@ -85,12 +94,21 @@ const SiteInput = ({
         placeholder="Email / Username / Telefone"
         autoCapitalize="none"
       />
-      <S.Input
-        style={styles.shadow}
-        value={password}
-        onChangeText={setPassword}
-        placeholder="Senha"
-      />
+      <S.InputGroup style={styles.shadow}>
+        <S.Input
+          value={password}
+          onChangeText={setPassword}
+          placeholder="Senha"
+          secureTextEntry={viewPassword}
+        />
+        <S.InputEye onPress={toggleViewPassword}>
+          <Feather
+            name={viewPassword ? 'eye' : 'eye-off'}
+            color="#BE5DEB"
+            size={30}
+          />
+        </S.InputEye>
+      </S.InputGroup>
       <S.SelectContainer>
         <SelectInput
           width="60%"

@@ -3,6 +3,20 @@ import MaskInput from 'react-native-mask-input';
 
 const background = '#FFFFFF';
 
+export const InputGroup = styled.View`
+  width: 90%;
+  height: 65px;
+
+  flex-direction: row;
+
+  margin: 0px auto;
+  margin-bottom: 20px;
+
+  border-radius: 10px;
+
+  background-color: ${background};
+`;
+
 export const InputMask = styled(MaskInput).attrs({
   placeholderTextColor: 'rgba(55, 58, 77, 0.3)',
 })`
@@ -24,6 +38,7 @@ export const InputMask = styled(MaskInput).attrs({
 
 export const Input = styled.TextInput.attrs({
   placeholderTextColor: 'rgba(55, 58, 77, 0.3)',
+  autoCapitalize: 'none',
 })`
   width: 90%;
   height: 65px;
@@ -41,6 +56,18 @@ export const Input = styled.TextInput.attrs({
   font-size: 16px;
 `;
 
+export const InputEye = styled.TouchableOpacity.attrs({
+  activeOpacity: 1,
+})`
+  width: 40px;
+  height: 64px;
+
+  align-items: center;
+  justify-content: center;
+
+  padding-right: 10px;
+`;
+
 export const SelectContainer = styled.View`
   width: 90%;
   height: auto;
@@ -55,7 +82,7 @@ export const Button = styled.TouchableOpacity.attrs({
   activeOpacity: 1,
 })`
   width: 90%;
-  height: 60px;
+  height: 65px;
 
   align-items: center;
   justify-content: center;
@@ -64,7 +91,7 @@ export const Button = styled.TouchableOpacity.attrs({
 
   background-color: #be5deb;
 
-  border-radius: 60px;
+  border-radius: 10px;
 `;
 
 export const ButtonText = styled.Text`
