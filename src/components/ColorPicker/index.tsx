@@ -1,10 +1,9 @@
 import React, {useState} from 'react';
 import {StyleSheet} from 'react-native';
 import Icon from 'react-native-vector-icons/Feather';
+import {randomColor} from 'pyloo';
 
 import * as S from './styles.colorpicker';
-
-import {randomColor} from '@lib/colors';
 
 interface IColorPicker {
   color: string;
