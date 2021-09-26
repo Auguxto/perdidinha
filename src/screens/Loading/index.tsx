@@ -1,12 +1,12 @@
 import React, {useEffect, useContext} from 'react';
 import {DrawerNavigationProp} from '@react-navigation/drawer';
-import {authenticate, hideSplashScreen} from '@lib/perdidinha';
 
 import * as S from './styles.loading';
 
 import {UserContext} from '@contexts/UserContext';
 
 import {getUser} from '@lib/storage';
+import {authenticate, hideSplashScreen} from '@lib/perdidinha';
 
 interface ILoading {
   navigation: DrawerNavigationProp<RootDrawerNavigation, 'Loading'>;

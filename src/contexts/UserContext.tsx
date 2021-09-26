@@ -14,7 +14,11 @@ interface IUserContext {
   user: User;
   passwords: Password[];
   load: (user: User) => void;
-  handleSetUser: (name_value: string, biometry_value: boolean) => void;
+  handleSetUser: (
+    name_value: string,
+    biometry_value: boolean,
+    avatar_value: string,
+  ) => void;
   handleRemoveUser: () => void;
   handleAddPassword: (password: Password) => void;
   handleRemovePassword: (id: string) => void;
@@ -31,11 +35,24 @@ const UserProvider = ({children}: IUserProvider) => {
   const [user, setUser] = useState<User>();
   const [passwords, setPasswords] = useState<Password[]>();
 
-  async function handleSetUser(name_value: string, biometry_value: boolean) {
+  async function handleSetUser(
+    name_value: string,
+    biometry_value: boolean,
+    avatar_value: string,
+  ) {
     const id = uuid();
-    setUser({name: name_value, biometry: biometry_value, id});
-    await saveUser({name: name_value, biometry: biometry_value, id});
-    console.log(user);
+    setUser({
+      name: name_value,
+      biometry: biometry_value,
+      id,
+      avatar: avatar_value,
+    });
+    await saveUser({
+      name: name_value,
+      biometry: biometry_value,
+      id,
+      avatar: avatar_value,
+    });
   }
 
   async function load(local_user: User) {

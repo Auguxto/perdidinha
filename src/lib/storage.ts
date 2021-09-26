@@ -22,7 +22,6 @@ export async function saveUser(user: User) {
     await AsyncStorage.setItem('user', JSON.stringify(user));
   } catch (err) {
     console.log(`Error on saving ${user}`);
-    console.log(err);
   }
 }
 

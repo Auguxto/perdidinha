@@ -9,20 +9,24 @@ export const PerfilContainer = styled.View`
 `;
 
 export const AvatarWrapper = styled.TouchableOpacity.attrs({
-  activeOpacity: 1,
+  activeOpacity: 0.8,
 })`
   flex: 1;
 
   align-items: center;
+
+  background-color: #ffffff;
 `;
 
 export const AvatarSvg = styled(Avatar)`
   width: 300px;
   height: 300px;
 
-  border-radius: 500px;
-
   margin-top: 20%;
+
+  background-color: #ffffff;
+
+  border-radius: 500px;
 `;
 
 export const AvatarImageWrapper = styled.View`
@@ -31,12 +35,16 @@ export const AvatarImageWrapper = styled.View`
 
   margin-top: 20%;
 
+  background-color: #ffffff;
+
   border-radius: 500px;
 `;
 
 export const AvatarImage = styled.Image`
   width: 300px;
   height: 300px;
+
+  background-color: #ffffff;
 
   border-radius: 500px;
 `;

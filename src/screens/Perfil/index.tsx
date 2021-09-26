@@ -16,9 +16,14 @@ const Perfil = ({navigation}) => {
 
   const [checked, setChecked] = useState(user.biometry);
   const [name, setName] = useState<string>();
+  const [avatar, setAvatar] = useState<string>(user.avatar);
 
   async function saveData() {
-    handleSetUser(name ? name : user.name, checked);
+    handleSetUser(
+      name ? name : user.name,
+      checked,
+      avatar ? avatar : undefined,
+    );
     setName(null);
   }
 
@@ -31,6 +36,7 @@ const Perfil = ({navigation}) => {
     }).then(image => {
       saveAvatar(image.path);
       user.avatar = image.path;
+      setAvatar(image.path);
       load(user);
     });
   }
